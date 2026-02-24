@@ -1,11 +1,11 @@
-import { NavModule } from '@eklipse/ng-layouts/admin';
+import { NavModule, setAleatorySidebarThemeToAllModules } from '@eklipse/ng-layouts/admin';
 
-export const SEGURIDAD_SNAV_ITEMS: NavModule[] = [
+export const SEGURIDAD_SNAV_ITEMS: NavModule[] = setAleatorySidebarThemeToAllModules([
   {
     id: 'seguridad',
     label: 'Seguridad',
     icon: 'shield-check',
-    accent: 'amber',
+    //accent: 'amber',
     description: 'Autenticación, permisos, auditoría y control de acceso al sistema.',
     authorities: ['admin', 'seguridad'],
     submodules: [
@@ -13,7 +13,7 @@ export const SEGURIDAD_SNAV_ITEMS: NavModule[] = [
         id: 'permisos',
         label: 'Permisos',
         icon: 'lock',
-        accent: 'purple',
+        //accent: 'purple',
         description: 'Gestión de módulos, roles y permisos de usuarios.',
         authorities: ['admin', 'seguridad-permisos'],
         routes: [
@@ -47,4 +47,4 @@ export const SEGURIDAD_SNAV_ITEMS: NavModule[] = [
       },
     ],
   },
-];
+]);

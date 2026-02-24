@@ -80,8 +80,6 @@ export class TopbarComponent implements OnInit, OnDestroy {
   }
 
   private _execute() {
-    console.log(location.href);
-
     if (location.href === this.home) {
       this.showHeaderForRoutes.set(false);
     } else {
