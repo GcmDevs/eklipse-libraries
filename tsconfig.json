@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "allowJs": true,
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -16,6 +17,7 @@
     "module": "preserve",
     "paths": {
       // Agregar paths de librerías aquí
+      "@eklipse/ng-utilities": ["./dist/utilities"]
     }
   },
   "angularCompilerOptions": {
@@ -28,6 +30,8 @@
   "files": [],
   "references": [
     // Agregar referencias a librerías aquí
+    { "path": "./libraries/utilities/tsconfig.spec.json" },
+    { "path": "./libraries/utilities/tsconfig.lib.json" },
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.spec.json" }
   ]

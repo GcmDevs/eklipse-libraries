@@ -1,0 +1,14 @@
+{
+  "name": "@eklipse/ng-utilities",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^20.3.0",
+    "@angular/core": "^20.3.0",
+    "file-saver": "^2.0.5",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/file-saver": "^2.0.7"
+  },
+  "sideEffects": false
+}
