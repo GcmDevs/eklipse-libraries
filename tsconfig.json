@@ -16,7 +16,7 @@
     "module": "preserve",
     "paths": {
       // Agregar paths de librerías aquí
-      "@eklipse/ng-layouts": ["./dist/layouts"]
+      "@eklipse/ng-layouts/*": ["./libraries/layouts/*"]
     }
   },
   "angularCompilerOptions": {

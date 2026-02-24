@@ -83,7 +83,7 @@
       "projectType": "library",
       "root": "libraries/layouts",
       "sourceRoot": "libraries/layouts/src",
-      "prefix": "lib",
+      "prefix": "gcm",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
