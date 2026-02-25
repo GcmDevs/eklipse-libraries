@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^20.3.0",
-    "@angular/core": "^20.3.0"
+    "@angular/core": "^20.3.0",
+    "lucide-angular": "^0.575.0"
   },
   "sideEffects": false
 }
