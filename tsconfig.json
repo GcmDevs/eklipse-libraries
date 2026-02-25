@@ -18,7 +18,8 @@
     "paths": {
       // Agregar paths de librerías aquí
       "@eklipse/ng-utilities": ["./dist/utilities"],
-      "@eklipse/ng-layouts/*": ["./libraries/layouts/*"]
+      "@eklipse/ng-layouts/*": ["./libraries/layouts/*"],
+      "@eklipse/ng-components/*": ["./libraries/components/*"]
     }
   },
   "angularCompilerOptions": {
@@ -31,6 +32,8 @@
   "files": [],
   "references": [
     // Agregar referencias a librerías aquí
+    { "path": "./libraries/components/tsconfig.lib.json" },
+    { "path": "./libraries/components/tsconfig.spec.json" },
     { "path": "./libraries/utilities/tsconfig.spec.json" },
     { "path": "./libraries/utilities/tsconfig.lib.json" },
     { "path": "./libraries/layouts/tsconfig.lib.json" },

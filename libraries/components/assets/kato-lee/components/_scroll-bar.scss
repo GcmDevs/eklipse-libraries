@@ -1,0 +1,31 @@
+$SM_RESOLUTION: 361px;
+$MD_RESOLUTION: 641px;
+$LG_RESOLUTION: 721px;
+$XL_RESOLUTION: 961px;
+$XXL_RESOLUTION: 1201px;
+
+$MOBILE_RESOLUTION: 900px;
+
+@media only screen and (min-width: calc($MOBILE_RESOLUTION)) {
+  .tak-admin-layout > .tak-container,
+  .tak-sidebar__container,
+  .tak-box-form__scroll,
+  .tak-table__content,
+  .tak-pretty-box--scroll,
+  .tak-pretty-box--header,
+  .tak-pretty-box--footer,
+  .mat-select-panel,
+  .mat-autocomplete-panel,
+  textarea,
+  .mat-dialog-content {
+    &::-webkit-scrollbar {
+      background-color: rgba(192, 192, 192, 0.072);
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(192, 192, 192, 0.562);
+      border-radius: 10px;
+    }
+  }
+}

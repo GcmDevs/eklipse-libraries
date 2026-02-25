@@ -1,0 +1,24 @@
+@use 'buttons';
+@use 'cards';
+@use 'checkbox';
+@use 'dialogs';
+@use 'fields';
+@use 'pretty-box';
+@use 'scroll-bar';
+@use 'snack-bar';
+@use 'tabs';
+
+.cdk-overlay-dark-backdrop {
+  backdrop-filter: blur(3px);
+}
+
+.mat-menu-panel {
+  color: var(--tak-layout-dark-color);
+}
+
+.mat-expansion-panel .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled='true']),
+.mat-expansion-panel .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled='true']),
+.mat-expansion-panel:not(.mat-expanded)
+  .mat-expansion-panel-header:hover:not([aria-disabled='true']) {
+  background: transparent;
+}

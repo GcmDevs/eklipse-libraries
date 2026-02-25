@@ -1,0 +1,26 @@
+.tak-simple-card {
+  border-bottom: solid 1px var(--tak-card-border-color);
+  border-right: solid 1px var(--tak-card-border-color);
+  border-left: solid 1px var(--tak-card-border-color);
+  box-shadow: var(--tak-card-box-shadow);
+  background-color: var(--tak-card-background-color);
+  border-radius: 0 0 5px 5px;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+  overflow: hidden;
+  min-height: 20px;
+  padding: 10px;
+  &--topline {
+    border-right: solid 1px var(--tak-card-border-color);
+    border-left: solid 1px var(--tak-card-border-color);
+    border-top: solid 1px var(--tak-card-border-color);
+    box-shadow: var(--tak-card-box-shadow);
+    background-color: var(--tak-card-default-top-color);
+    border-radius: 5px 5px 0 0;
+    padding: 3px;
+  }
+  &.no-card-topline {
+    border-radius: 5px !important;
+    border-top: 1px solid var(--tak-card-border-color) !important;
+  }
+}

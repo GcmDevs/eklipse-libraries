@@ -1,0 +1,57 @@
+$DEFAULT_PADDING: 10px;
+.tak-box-form {
+  .mat-mdc-card {
+    background-color: var(--tak-card-background-color);
+  }
+  .mdc-card.actions-hidden {
+    padding: 0;
+  }
+  .mdc-card > .mdc-card-actions:last-child {
+    margin-bottom: -8px;
+    padding: 8px;
+  }
+  .mat-mdc-card-actions {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .mdc-card {
+    padding: 0 0 8px 0;
+  }
+  .tak-box-form {
+    &__branding {
+      font-family: Roboto, 'Helvetica Neue', sans-serif;
+      padding: $DEFAULT_PADDING;
+      text-overflow: ellipsis;
+      font-weight: bolder;
+      white-space: nowrap;
+      overflow: hidden;
+      &__title {
+        color: var(--tak-box-form-title-color);
+      }
+      &__subtitle {
+        color: var(--tak-box-form-subtitle-color);
+        &::before {
+          content: '\A';
+          white-space: pre;
+        }
+      }
+    }
+    &__scroll {
+      height: auto;
+      overflow: auto;
+    }
+    &__content {
+      padding: $DEFAULT_PADDING;
+    }
+  }
+  .action-button {
+    font-weight: bolder !important;
+  }
+  .mdc-card__actions {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,35 @@
+html {
+  --tak-snackbar-notification-color: rgb(39, 39, 39);
+  --tak-snackbar-notification-action-color: #004646;
+  --tak-snackbar-notification-background-color: rgba(27, 27, 27, 0.925);
+  --tak-snackbar-success-color: rgb(39, 39, 39);
+  --tak-snackbar-success-action-color: #004646;
+  --tak-snackbar-success-background-color: rgba(223, 246, 234, 0.925);
+  --tak-snackbar-danger-color: rgb(39, 39, 39);
+  --tak-snackbar-danger-action-color: #fd2626;
+  --tak-snackbar-danger-background-color: rgba(255, 156, 156, 0.925);
+  --tak-form-field-error-color: rgb(255, 0, 0);
+  --tak-form-field-hint-color: rgb(128, 128, 128);
+  --tak-box-form-title-color: rgb(10, 161, 174);
+  --tak-box-form-subtitle-color: rgb(120, 203, 211);
+  --tak-table-header-color: rgb(255, 255, 255);
+  --tak-table-header-background-color: rgb(25, 27, 60);
+  --tak-table-row-subcontent-color: rgb(128, 128, 128);
+  --tak-table-selectable-hover-color: rgba(0, 0, 0, 0.12);
+  --tak-table-container-box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  --tak-table-container-border-color: none;
+  --tak-paginator-container-background-color: rgb(255, 255, 255);
+  --tak-paginator-range-label-color: rgb(128, 128, 128);
+  --tak-pretty-box-border-color: rgba(0, 0, 0, 0.12);
+  --tak-card-border-color: rgba(0, 0, 0, 0.12);
+  --tak-card-box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  --tak-card-background-color: rgb(255, 255, 255);
+  --tak-card-default-top-color: rgb(10, 161, 174);
+  --tak-table-header-background-color: #191b3c;
+  --tak-border-color-default: rgba(0, 0, 0, 0.12);
+  --tak-layout-opacity-dark-color: rgba(0, 0, 0, 0.12);
+  --tak-light-background-color-100: #ffffff;
+  --mat-table-background-color: #ffffff;
+}

@@ -1,0 +1,40 @@
+@mixin customizedTakFadeIn($size) {
+  .tak-fade-in--#{$size} {
+    animation: takFadeIn ease $size;
+    -webkit-animation: takFadeIn ease $size;
+    -moz-animation: takFadeIn ease $size;
+    -o-animation: takFadeIn ease $size;
+    -ms-animation: takFadeIn ease $size;
+  }
+}
+
+@keyframes takFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes takFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes takFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@include customizedTakFadeIn(300ms);
+@include customizedTakFadeIn(500ms);
+@include customizedTakFadeIn(800ms);

@@ -1,0 +1,59 @@
+@if (!notInput) {
+<div class="tak-form-container">
+  <mat-form-field
+    [class.mat-form-field-invalid]="isInvalid || (isSubmitted && control.invalid)"
+    [appearance]="appearance"
+    [color]="color"
+  >
+    <mat-label>
+      <ng-content />{{ ' ' }} @if (required) {
+      <span class="tak-field__danger-x">*</span>
+      }
+    </mat-label>
+    <input
+      matInput
+      [min]="minDate"
+      [max]="maxDate"
+      [autocomplete]="autocomplete"
+      [matDatepicker]="picker"
+      [value]="value"
+      (keyup)="onChange($event)"
+      (dateChange)="onChange($event)"
+      [placeholder]="placeholder"
+      [disabled]="isDisabled"
+      (focusout)="onFocusout()"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker (closed)="onCloseDatePicker()" #picker></mat-datepicker>
+  </mat-form-field>
+  @if (isInvalid || (isSubmitted && control.invalid)) {
+  <tak-error [control]="control" [isDateField]="true" />
+  }
+</div>
+} @if (notInput) {
+<div>
+  <div
+    class="tak__date-not-input__picker-container"
+    [class.mat-form-field-invalid]="isInvalid || (isSubmitted && control.invalid)"
+  >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker (closed)="onCloseDatePicker()" #picker></mat-datepicker>
+  </div>
+  <div class="tak__date-not-input__field-container">
+    <mat-form-field [color]="color">
+      <input
+        matInput
+        [min]="minDate"
+        [max]="maxDate"
+        autocomplete="off"
+        [matDatepicker]="picker"
+        [value]="value"
+        (keyup)="onChange($event)"
+        (dateChange)="onChange($event)"
+        [disabled]="isDisabled"
+        (focusout)="onFocusout()"
+      />
+    </mat-form-field>
+  </div>
+</div>
+}

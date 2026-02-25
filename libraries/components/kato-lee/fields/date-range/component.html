@@ -1,0 +1,46 @@
+@if (!notInput) {
+<div class="tak-form-container">
+  <mat-form-field [appearance]="appearance" [color]="color">
+    <mat-label>
+      <ng-content />
+    </mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input
+        matStartDate
+        [placeholder]="startPlaceholder"
+        [formControl]="start"
+        [autocomplete]="autocomplete"
+      />
+      <input matEndDate [placeholder]="endPlaceholder" [formControl]="end" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  @if ((start.invalid || end.invalid) && (start.touched || end.touched)) {
+  <tak-error [start]="start" [end]="end"> </tak-error>
+  }
+</div>
+} @if (notInput) {
+<div>
+  <div
+    class="tak__date-not-input__picker-container"
+    [class.mat-form-field-invalid]="
+        (start.invalid || end.invalid) && (start.touched || end.touched)
+      "
+  >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker [disabled]="isDisabled"></mat-date-range-picker>
+  </div>
+  <div class="tak__date-not-input__field-container">
+    <mat-form-field [color]="color">
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate [formControl]="start" />
+        <input matEndDate [formControl]="end" />
+      </mat-date-range-input>
+    </mat-form-field>
+  </div>
+  @if ((start.invalid || end.invalid) && (start.touched || end.touched) && !notInput) {
+  <tak-error [start]="start" [end]="end" [marginTop]="-60"></tak-error>
+  }
+</div>
+}

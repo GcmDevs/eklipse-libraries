@@ -1,0 +1,167 @@
+@use '@angular/material' as mat;
+
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+html {
+  --tak-primary-100: rgb(120, 203, 211);
+  --tak-primary-500: rgb(10, 161, 174);
+  --tak-primary-700: rgb(8, 119, 129);
+  --tak-primary-constrant-100: rgb(140, 238, 247);
+  --tak-primary-constrant-500: rgb(14, 187, 202);
+  --tak-primary-constrant-700: rgb(15, 163, 177);
+  --tak-primary-opacity-100: rgb(120, 203, 211, 0.3);
+  --tak-primary-opacity-500: rgb(10, 161, 174, 0.3);
+  --tak-primary-opacity-700: rgb(8, 119, 129, 0.3);
+  --tak-accent-100: rgb(30, 233, 148);
+  --tak-accent-500: rgb(24, 182, 116);
+  --tak-accent-700: rgb(29, 139, 110);
+  --tak-accent-opacity-100: rgb(30, 233, 148, 0.3);
+  --tak-accent-opacity-500: rgb(24, 182, 116, 0.3);
+  --tak-accent-opacity-700: rgb(29, 139, 110, 0.3);
+  --tak-accent-constrant-100: rgb(177, 243, 214);
+  --tak-accent-constrant-500: rgb(70, 221, 158);
+  --tak-accent-constrant-700: rgb(65, 185, 135);
+  --tak-warn-100: rgb(255, 55, 55);
+  --tak-warn-500: rgb(255, 0, 0);
+  --tak-warn-700: rgb(168, 0, 0);
+  --tak-warn-opacity-100: rgb(255, 55, 55, 0.3);
+  --tak-warn-opacity-500: rgb(255, 0, 0, 0.3);
+  --tak-warn-opacity-700: rgb(168, 0, 0, 0.3);
+  --tak-warn-constrant-100: rgb(254, 191, 191);
+  --tak-warn-constrant-500: rgb(255, 128, 128);
+  --tak-warn-constrant-700: rgb(191, 96, 96);
+}
+
+// mat.$red-palette
+// mat.$green-palette
+// mat.$blue-palette
+// mat.$yellow-palette
+// mat.$cyan-palette
+// mat.$magenta-palette
+// mat.$orange-palette
+// mat.$chartreuse-palette
+// mat.$spring-green-palette
+// mat.$azure-palette
+// mat.$violet-palette
+// mat.$rose-palette
+
+$matTheme: mat.$cyan-palette;
+
+$theme: mat.define-theme(
+  (
+    color: (
+      primary: $matTheme,
+      tertiary: mat.$green-palette,
+    ),
+  )
+);
+
+html {
+  @include mat.theme(
+    (
+      color: $matTheme,
+      density: 0,
+    )
+  );
+}
+
+[color='no-theme'] {
+  @include mat.button-theme($theme: $theme, $color-variant: 'primary');
+  @include mat.icon-button-theme($theme: $theme, $color-variant: 'primary');
+  @include mat.fab-theme($theme: $theme, $color-variant: 'primary');
+  color: black !important;
+}
+
+[color='primary'] {
+  @include mat.button-theme($theme: $theme, $color-variant: 'primary');
+  @include mat.icon-button-theme($theme: $theme, $color-variant: 'primary');
+  @include mat.fab-theme($theme: $theme, $color-variant: 'primary');
+}
+
+[color='accent'] {
+  @include mat.button-theme($theme: $theme, $color-variant: 'tertiary');
+  @include mat.icon-button-theme($theme: $theme, $color-variant: 'tertiary');
+  @include mat.fab-theme($theme: $theme, $color-variant: 'tertiary');
+}
+
+[color='warn'] {
+  @include mat.button-theme($theme: $theme, $color-variant: 'error');
+  @include mat.icon-button-theme($theme: $theme, $color-variant: 'error');
+  @include mat.fab-theme($theme: $theme, $color-variant: 'error');
+}
+
+.mat-mdc-cell,
+.mat-mdc-header-cell {
+  border-bottom-color: rgb(0, 0, 0, 0.12) !important;
+}
+.mat-mdc-paginator-range-label {
+  color: rgb(128, 128, 128);
+  font-size: 12px;
+}
+.bg-tak-primary-500 {
+  background-color: var(--tak-primary-500) !important;
+}
+.bg-tak-accent-500 {
+  background-color: var(--tak-accent-500) !important;
+}
+.bg-tak-warn-500 {
+  background-color: var(--tak-warn-500) !important;
+}
+.cdk-global-scrollblock {
+  overflow-y: hidden !important;
+}
+.tak-modal__content {
+  padding: 10px 24px !important;
+}
+button[mat-icon-button],
+button[matIconButton] {
+  &[color='warn'] {
+    color: #ef4444 !important;
+    background: #fee2e2 !important;
+  }
+}
+button[mat-icon-button],
+button[matIconButton] {
+  &[color='accent'] {
+    color: #10b981 !important;
+    background: #dcfce7 !important;
+  }
+}
+button[mat-icon-button],
+button[matIconButton] {
+  &[color='primary'] {
+    color: rgb(10, 161, 174) !important;
+    background: rgb(224, 252, 255) !important;
+  }
+}
+.tak-dialog-title,
+.mat-mdc-dialog-content,
+.tak-modal__top-container--custom,
+.mat-mdc-dialog-actions,
+.mat-mdc-dialog-title {
+  background-color: white !important;
+}
+.tak__date-not-input__field-container {
+  height: 22px;
+}
+.mdc-tab__text-label {
+  font-weight: bolder;
+  font-size: 14px;
+}
+.mat-mdc-tab .mdc-tab__text-label {
+  color: #737576 !important;
+}
+.mat-mdc-tab.mdc-tab--active,
+.mat-mdc-tab.mdc-tab--active:hover {
+  .mdc-tab__text-label {
+    color: rgb(10, 161, 174) !important;
+  }
+}
+.mat-mdc-tab-group .mat-mdc-tab .mdc-tab-indicator__content--underline {
+  border-color: rgb(10, 161, 174) !important;
+}
+.mat-mdc-cell {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

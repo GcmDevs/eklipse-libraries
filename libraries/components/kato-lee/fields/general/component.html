@@ -1,0 +1,61 @@
+<div class="tak-form-container">
+  <mat-form-field
+    [floatLabel]="floatLabel"
+    [class.mat-form-field-invalid]="isInvalid || (isSubmitted && control.invalid)"
+    [appearance]="appearance"
+    [color]="color"
+  >
+    <mat-label>
+      <ng-content />{{ ' ' }}
+      @if (required) {
+        <span class="tak-field__danger-x">*</span>
+      }
+    </mat-label>
+    <input
+      [type]="type === 'password' && !decrypted ? 'password' : 'text'"
+      matInput
+      [autocomplete]="autocomplete"
+      [value]="value"
+      (keyup)="onChange($event)"
+      (change)="onChange($event)"
+      [placeholder]="placeholder"
+      [disabled]="isDisabled"
+      [attr.minLength]="minLength"
+      [attr.maxLength]="maxLength"
+      (focusout)="onFocusOut()"
+    />
+    @if (control.value && hasClearButton && !isDisabled) {
+      <button matSuffix mat-icon-button color="no-theme" type="button" (click)="onClearControl()">
+        <mat-icon class="tak-suffix-icon-button">close</mat-icon>
+      </button>
+    }
+    @if (control.value && hasActionButton && !isDisabled) {
+      <button
+        matSuffix
+        mat-icon-button
+        color="no-theme"
+        type="button"
+        (click)="onExecuteAction.emit(control.value)"
+      >
+        <mat-icon class="tak-suffix-icon-button">{{ actionIcon }}</mat-icon>
+      </button>
+    }
+    @if (control.value && type === 'password' && !isDisabled) {
+      <button matSuffix mat-icon-button color="no-theme" type="button" (click)="showPassword()">
+        <mat-icon class="tak-suffix-icon-button">{{
+          decrypted ? 'visibility_off' : 'visibility'
+        }}</mat-icon>
+      </button>
+    }
+    @if (countCaracters) {
+      <mat-hint align="end" class="tak-hint">
+        {{ control.value?.length || 0 }}/{{ maxLength }}
+      </mat-hint>
+    }
+  </mat-form-field>
+  <div [style.maxWidth]="countCaracters ? '80%' : '100%'">
+    @if (isInvalid || (isSubmitted && control.invalid)) {
+      <tak-error [control]="control"></tak-error>
+    }
+  </div>
+</div>

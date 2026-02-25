@@ -1,0 +1,59 @@
+<div class="tak-form-container">
+  <mat-form-field
+    [class.mat-form-field-invalid]="isInvalid || (isSubmitted && control.invalid)"
+    [appearance]="appearance"
+    [color]="color"
+  >
+    <mat-label>
+      <ng-content />{{ ' ' }}
+      @if (required) {
+        <span class="tak-field__danger-x">*</span>
+      }
+    </mat-label>
+    <input
+      matInput
+      [autocomplete]="autocomplete"
+      [matAutocomplete]="auto"
+      [value]="value"
+      (keyup)="onChange($event)"
+      (change)="onChange($event)"
+      [disabled]="isDisabled"
+      (focus)="onFocus()"
+      (focusout)="onFocusout()"
+    />
+    @if (isRemoteSearch && isLoading) {
+      <button matSuffix mat-icon-button color="no-theme" type="button">
+        <mat-spinner [diameter]="15" mode="indeterminate"></mat-spinner>
+      </button>
+    }
+    @if ((control.value || value) && hasClearButton && !disabled) {
+      <button matSuffix mat-icon-button color="no-theme" type="button" (click)="onClearControl()">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+    <mat-autocomplete #auto="matAutocomplete">
+      @for (suggestion of filteredOptions | async; track suggestion) {
+        <mat-option
+          [value]="suggestion[option]"
+          [class.tak-option-extra]="extraInfo"
+          (onSelectionChange)="emit($event)"
+          (click)="emitWithClick(suggestion)"
+          title="{{ suggestion[option] }} {{ extraInfo ? '(' + suggestion[extraInfo] + ')' : '' }}"
+        >
+          <span>{{ suggestion[option] }}</span>
+          @if (extraInfo) {
+            <span class="tak-option-span-extra">{{ suggestion[extraInfo] }}</span>
+          }
+        </mat-option>
+      }
+      @if (notSuggestions && control.invalid) {
+        <mat-option>
+          <span class="tak-autocomplete-not-records"> No se encuentran resultados </span>
+        </mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+  @if (isInvalid || (isSubmitted && control.invalid)) {
+    <tak-error [control]="control"></tak-error>
+  }
+</div>
