@@ -1,0 +1,402 @@
+:root {
+  /* BASE COLORS */
+  --red: #ef4444;
+  --gray: #6b7280;
+  --blue: #2196f3;
+  --white: #ffffff;
+  --black: #1f1f1f;
+  --green: #10b981;
+  --violet: #b21a6c;
+  --yellow: #facc15;
+  --orange: #f97316;
+  --amber: #f59e0b;
+  --purple: #7c3aed;
+  --teal: #00b8a9;
+  --cyan: #06b6d4;
+  --sky: #38bdf8;
+  --indigo: #6366f1;
+  --pink: #ec4899;
+  --rose: #f43f5e;
+  --lime: #84cc16;
+  --emerald: #059669;
+  --mint: #2dd4bf;
+  --slate: #64748b;
+  --zinc: #71717a;
+  --neutral: #737373;
+  --stone: #78716c;
+  --brown: #92400e;
+  --gold: #d4af37;
+  --navy: #1e3a8a;
+  --magenta: #d946ef;
+  --lavender: #c084fc;
+  --peach: #fb7185;
+  --coral: #fb923c;
+  --aqua: #22d3ee;
+  --forest: #166534;
+  --olive: #4d7c0f;
+  --sand: #ebd16a;
+  --chocolate: #7c2d12;
+  --plum: #701a75;
+  --turquoise: #14b8a6;
+  --steel: #475569;
+  --charcoal: #111827;
+  --cream: #d7d198;
+  --ice: #94b0c3;
+  --blood: #7f1d1d;
+  --sun: #fbbf24;
+  --royal: #4f46e5;
+  --electric: #22c55e;
+  --midnight: #020617;
+  --ruby: #9f1239;
+  /* CONSTRANT (SOFT BG COLORS) */
+  --red-constrant: #fee2e2;
+  --gray-constrant: #f3f4f6;
+  --blue-constrant: #dbeafe;
+  --green-constrant: #dcfce7;
+  --amber-constrant: #fef3c7;
+  --teal-constrant: #ccfbf1;
+  --purple-constrant: #ede9fe;
+  --cyan-constrant: #cffafe;
+  --sky-constrant: #e0f2fe;
+  --indigo-constrant: #e0e7ff;
+  --pink-constrant: #fce7f3;
+  --rose-constrant: #ffe4e6;
+  --lime-constrant: #ecfccb;
+  --emerald-constrant: #d1fae5;
+  --mint-constrant: #ccfbf1;
+  --slate-constrant: #f1f5f9;
+  --zinc-constrant: #f4f4f5;
+  --neutral-constrant: #fafafa;
+  --stone-constrant: #fafaf9;
+  --brown-constrant: #fef3c7;
+  --gold-constrant: #fef9c3;
+  --navy-constrant: #dbeafe;
+  --magenta-constrant: #fae8ff;
+  --lavender-constrant: #f3e8ff;
+  --peach-constrant: #ffe4e6;
+  --coral-constrant: #ffedd5;
+  --aqua-constrant: #ecfeff;
+  --forest-constrant: #dcfce7;
+  --olive-constrant: #ecfccb;
+  --sand-constrant: #fffcf1;
+  --chocolate-constrant: #ffedd5;
+  --plum-constrant: #fce7f3;
+  --turquoise-constrant: #ccfbf1;
+  --steel-constrant: #f1f5f9;
+  --charcoal-constrant: #f9fafb;
+  --cream-constrant: #fffbeb;
+  --ice-constrant: #e0f2fe;
+  --blood-constrant: #fee2e2;
+  --sun-constrant: #fef3c7;
+  --royal-constrant: #e0e7ff;
+  --electric-constrant: #dcfce7;
+  --midnight-constrant: #f8fafc;
+  --ruby-constrant: #ffe4e6;
+}
+
+.vcl-top-line-card {
+  &--red::before {
+    background: var(--red);
+  }
+  &--gray::before {
+    background: var(--gray);
+  }
+  &--blue::before {
+    background: var(--blue);
+  }
+  &--green::before {
+    background: var(--green);
+  }
+  &--amber::before {
+    background: var(--amber);
+  }
+  &--teal::before {
+    background: var(--teal);
+  }
+  &--purple::before {
+    background: var(--purple);
+  }
+  &--cyan::before {
+    background: var(--cyan);
+  }
+  &--sky::before {
+    background: var(--sky);
+  }
+  &--indigo::before {
+    background: var(--indigo);
+  }
+  &--pink::before {
+    background: var(--pink);
+  }
+  &--rose::before {
+    background: var(--rose);
+  }
+  &--lime::before {
+    background: var(--lime);
+  }
+  &--emerald::before {
+    background: var(--emerald);
+  }
+  &--mint::before {
+    background: var(--mint);
+  }
+  &--slate::before {
+    background: var(--slate);
+  }
+  &--zinc::before {
+    background: var(--zinc);
+  }
+  &--neutral::before {
+    background: var(--neutral);
+  }
+  &--stone::before {
+    background: var(--stone);
+  }
+  &--brown::before {
+    background: var(--brown);
+  }
+  &--gold::before {
+    background: var(--gold);
+  }
+  &--navy::before {
+    background: var(--navy);
+  }
+  &--magenta::before {
+    background: var(--magenta);
+  }
+  &--lavender::before {
+    background: var(--lavender);
+  }
+  &--peach::before {
+    background: var(--peach);
+  }
+  &--coral::before {
+    background: var(--coral);
+  }
+  &--aqua::before {
+    background: var(--aqua);
+  }
+  &--forest::before {
+    background: var(--forest);
+  }
+  &--olive::before {
+    background: var(--olive);
+  }
+  &--sand::before {
+    background: var(--sand);
+  }
+  &--chocolate::before {
+    background: var(--chocolate);
+  }
+  &--plum::before {
+    background: var(--plum);
+  }
+  &--turquoise::before {
+    background: var(--turquoise);
+  }
+  &--steel::before {
+    background: var(--steel);
+  }
+  &--charcoal::before {
+    background: var(--charcoal);
+  }
+  &--cream::before {
+    background: var(--cream);
+  }
+  &--ice::before {
+    background: var(--ice);
+  }
+  &--blood::before {
+    background: var(--blood);
+  }
+  &--sun::before {
+    background: var(--sun);
+  }
+  &--royal::before {
+    background: var(--royal);
+  }
+  &--electric::before {
+    background: var(--electric);
+  }
+  &--midnight::before {
+    background: var(--midnight);
+  }
+  &--ruby::before {
+    background: var(--ruby);
+  }
+}
+
+.vcl-icon {
+  &--red {
+    background: var(--red-constrant);
+    color: var(--red);
+  }
+  &--gray {
+    background: var(--gray-constrant);
+    color: var(--gray);
+  }
+  &--blue {
+    background: var(--blue-constrant);
+    color: var(--blue);
+  }
+  &--green {
+    background: var(--green-constrant);
+    color: var(--green);
+  }
+  &--amber {
+    background: var(--amber-constrant);
+    color: var(--amber);
+  }
+  &--teal {
+    background: var(--teal-constrant);
+    color: var(--teal);
+  }
+  &--purple {
+    background: var(--purple-constrant);
+    color: var(--purple);
+  }
+  &--cyan {
+    background: var(--cyan-constrant);
+    color: var(--cyan);
+  }
+  &--sky {
+    background: var(--sky-constrant);
+    color: var(--sky);
+  }
+  &--indigo {
+    background: var(--indigo-constrant);
+    color: var(--indigo);
+  }
+  &--pink {
+    background: var(--pink-constrant);
+    color: var(--pink);
+  }
+  &--rose {
+    background: var(--rose-constrant);
+    color: var(--rose);
+  }
+  &--lime {
+    background: var(--lime-constrant);
+    color: var(--lime);
+  }
+  &--emerald {
+    background: var(--emerald-constrant);
+    color: var(--emerald);
+  }
+  &--mint {
+    background: var(--mint-constrant);
+    color: var(--mint);
+  }
+  &--slate {
+    background: var(--slate-constrant);
+    color: var(--slate);
+  }
+  &--zinc {
+    background: var(--zinc-constrant);
+    color: var(--zinc);
+  }
+  &--neutral {
+    background: var(--neutral-constrant);
+    color: var(--neutral);
+  }
+  &--stone {
+    background: var(--stone-constrant);
+    color: var(--stone);
+  }
+  &--brown {
+    background: var(--brown-constrant);
+    color: var(--brown);
+  }
+  &--gold {
+    background: var(--gold-constrant);
+    color: var(--gold);
+  }
+  &--navy {
+    background: var(--navy-constrant);
+    color: var(--navy);
+  }
+  &--magenta {
+    background: var(--magenta-constrant);
+    color: var(--magenta);
+  }
+  &--lavender {
+    background: var(--lavender-constrant);
+    color: var(--lavender);
+  }
+  &--peach {
+    background: var(--peach-constrant);
+    color: var(--peach);
+  }
+  &--coral {
+    background: var(--coral-constrant);
+    color: var(--coral);
+  }
+  &--aqua {
+    background: var(--aqua-constrant);
+    color: var(--aqua);
+  }
+  &--forest {
+    background: var(--forest-constrant);
+    color: var(--forest);
+  }
+  &--olive {
+    background: var(--olive-constrant);
+    color: var(--olive);
+  }
+  &--sand {
+    background: var(--sand-constrant);
+    color: var(--sand);
+  }
+  &--chocolate {
+    background: var(--chocolate-constrant);
+    color: var(--chocolate);
+  }
+  &--plum {
+    background: var(--plum-constrant);
+    color: var(--plum);
+  }
+  &--turquoise {
+    background: var(--turquoise-constrant);
+    color: var(--turquoise);
+  }
+  &--steel {
+    background: var(--steel-constrant);
+    color: var(--steel);
+  }
+  &--charcoal {
+    background: var(--charcoal-constrant);
+    color: var(--charcoal);
+  }
+  &--cream {
+    background: var(--cream-constrant);
+    color: var(--cream);
+  }
+  &--ice {
+    background: var(--ice-constrant);
+    color: var(--ice);
+  }
+  &--blood {
+    background: var(--blood-constrant);
+    color: var(--blood);
+  }
+  &--sun {
+    background: var(--sun-constrant);
+    color: var(--sun);
+  }
+  &--royal {
+    background: var(--royal-constrant);
+    color: var(--royal);
+  }
+  &--electric {
+    background: var(--electric-constrant);
+    color: var(--electric);
+  }
+  &--midnight {
+    background: var(--midnight-constrant);
+    color: var(--midnight);
+  }
+  &--ruby {
+    background: var(--ruby-constrant);
+    color: var(--ruby);
+  }
+}

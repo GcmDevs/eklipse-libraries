@@ -1,18 +1,19 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AdminLayoutComponent, DashboardConfig } from '@eklipse/ng-layouts/admin';
+import { DashboardConfig } from '@eklipse/ng-layouts/admin';
 import { SEGURIDAD_SNAV_ITEMS } from './modules';
 import { Layers, LucideIconData, ShieldCheck, Lock } from 'lucide-angular';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet, AdminLayoutComponent],
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
+  selector: 'app-admin-dashboard',
+  imports: [RouterOutlet],
+  template: `
+    @if (resourcesLoaded()) {
+      <router-outlet />
+    }
+  `,
 })
-export class App implements OnInit {
-  protected readonly title = signal('eklipse-utilities');
-
+export class AdminDashboardComponent implements OnInit {
   resourcesLoaded = signal(false);
 
   config: DashboardConfig = {

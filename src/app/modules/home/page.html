@@ -1,0 +1,6 @@
+<div class="greeting">
+  <h1 class="greeting-title">{{ greeting() }}, {{ config.userFirstName }}</h1>
+  <p class="greeting-subtitle">Panel de administración — {{ config.contextForHumans }}</p>
+</div>
+
+<gcm-tasks-grid [iconMap]="iconMap" [config]="config" [modules]="modules"></gcm-tasks-grid>
