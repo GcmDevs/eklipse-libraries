@@ -28,7 +28,7 @@ export class AdminLayoutComponent {
 
   @Output() logout = new EventEmitter<void>();
 
-  sidebarOpen = signal(false);
+  @Input({ required: false }) sidebarOpen = signal(false);
 
   constructor(href: ElementRef<HTMLElement>) {
     href.nativeElement.classList.add('admin-layout');
