@@ -1,0 +1,49 @@
+@if (type === 'select') {
+  <div class="tak-form-container">
+    <mat-form-field [appearance]="appearance" [color]="color">
+      <mat-label><ng-content /></mat-label>
+      <mat-select [formControl]="control" (focusout)="onFocusOut()">
+        @for (suggestion of suggestions; track suggestion) {
+          <mat-option
+            [value]="suggestion"
+            (onSelectionChange)="emit($event)"
+            title="{{ suggestion[option] }} {{
+              extraInfo ? '(' + suggestion[extraInfo] + ')' : ''
+            }}"
+          >
+            {{ suggestion[option] }}
+            @if (extraInfo) {
+              <span class="tak-option-span-extra">{{ suggestion[extraInfo] }}</span>
+            }
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    @if (isInvalid || (isSubmitted && control.invalid)) {
+      <tak-error [control]="control"></tak-error>
+    }
+  </div>
+} @else {
+  <div [matTooltip]="tooltip">
+    @if (type === 'menu') {
+      <span>
+        <button
+          mat-icon-button
+          color="no-theme"
+          type="button"
+          [matMenuTriggerFor]="menu"
+          [disabled]="isDisabled"
+        >
+          <mat-icon>{{ icon }}</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          @for (item of suggestions; track item) {
+            <a tak-menu-item (click)="justEmit(item)">
+              {{ item[option] }}
+            </a>
+          }
+        </mat-menu>
+      </span>
+    }
+  </div>
+}

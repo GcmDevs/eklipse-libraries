@@ -1,0 +1,7 @@
+.mat-tab-label.mat-tab-disabled {
+  color: var(--tak-dark-color-700) !important;
+}
+.tak-disabled-tab .mat-tab-group .mat-ink-bar,
+.mat-tab-group.not-ink-bar .mat-ink-bar {
+  background-color: transparent !important;
+}

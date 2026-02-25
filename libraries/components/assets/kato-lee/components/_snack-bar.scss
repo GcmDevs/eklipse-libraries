@@ -1,0 +1,28 @@
+.tak-snackbar-success {
+  .mat-mdc-button:not(:disabled) {
+    color: var(--tak-snackbar-success-action-color) !important;
+  }
+  .mat-mdc-snackbar-surface,
+  .tak-snackbar-notification .mat-mdc-snack-bar-label .mdc-snackbar__label {
+    color: var(--tak-snackbar-success-color) !important;
+    background-color: var(--tak-snackbar-success-background-color) !important;
+  }
+}
+
+.tak-snackbar-danger {
+  .mat-mdc-button:not(:disabled) {
+    color: var(--tak-snackbar-danger-action-color) !important;
+  }
+  .mat-mdc-snackbar-surface,
+  .tak-snackbar-notification .mat-mdc-snack-bar-label .mdc-snackbar__label {
+    color: var(--tak-snackbar-danger-color) !important;
+    background-color: var(--tak-snackbar-danger-background-color) !important;
+  }
+}
+
+.tak-snackbar-notification {
+  .mat-mdc-snackbar-surface,
+  .tak-snackbar-notification .mat-mdc-snack-bar-label .mdc-snackbar__label {
+    background-color: var(--tak-snackbar-notification-background-color) !important;
+  }
+}

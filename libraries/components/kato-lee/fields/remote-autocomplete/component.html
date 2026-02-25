@@ -1,0 +1,77 @@
+@if (!justOneLoad || (justOneLoad && wasLoaded)) {
+  <mat-form-field appearance="fill">
+    <mat-label>
+      <ng-content />{{ ' ' }}
+      @if (isRequired) {
+        <span class="gcm-field__danger-x">*</span>
+      }
+    </mat-label>
+    <input matInput [formControl]="autocomplete" [matAutocomplete]="auto" />
+
+    @if (isLoading || (autocomplete.value === null && isLoadingItem)) {
+      <mat-spinner
+        mat-icon-button
+        color="no-theme"
+        [diameter]="15"
+        mode="indeterminate"
+        class="spinner-loading"
+      ></mat-spinner>
+    }
+    <!---->
+
+    @if (autocomplete.value) {
+      <button mat-icon-button color="no-theme" matSuffix (click)="reset()">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+    @if (justOneLoad && !autocomplete.value) {
+      <button mat-icon-button color="no-theme" matSuffix (click)="refresh()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    }
+
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      @if (!justOneLoad) {
+        @for (suggestion of suggestions; track $index) {
+          <mat-option
+            [value]="suggestion[option]"
+            title="{{ suggestion[option] }} {{
+              extraInfo ? '(' + suggestion[extraInfo] + ')' : ''
+            }}"
+            (onSelectionChange)="emit($event, suggestion)"
+          >
+            <span>{{ suggestion[option] }}</span>
+            @if (extraInfo) {
+              <span class="mat-option-span-extra">{{ suggestion[extraInfo] }}</span>
+            }
+          </mat-option>
+        }
+        @if (notSuggestions) {
+          <mat-option>
+            <span class="tak-autocomplete-not-records"> No se encuentran resultados </span>
+          </mat-option>
+        }
+      } @else {
+        @for (suggestion of filteredOptions | async; track $index) {
+          <mat-option
+            [value]="suggestion[option]"
+            title="{{ suggestion[option] }} {{
+              extraInfo ? '(' + suggestion[extraInfo] + ')' : ''
+            }}"
+            (onSelectionChange)="emit($event, suggestion)"
+          >
+            <span>{{ suggestion[option] }}</span>
+            @if (extraInfo) {
+              <span class="mat-option-span-extra">{{ suggestion[extraInfo] }}</span>
+            }
+          </mat-option>
+        }
+        @if (notSuggestions) {
+          <mat-option>
+            <span class="tak-autocomplete-not-records"> No se encuentran resultados </span>
+          </mat-option>
+        }
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+}

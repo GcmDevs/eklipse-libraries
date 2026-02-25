@@ -1,0 +1,32 @@
+<div class="{{ encapsulated ? 'container' : '' }}">
+  <div [class]="encapsulated ? 'row' : ''">
+    <div
+      [class]="encapsulated ? 'col-bt-12 col-bt-md-8 col-bt-lg-6 col-bt-xxl-4' : ''"
+      [style]="encapsulated ? 'margin: auto' : ''"
+    >
+      <div class="tak-pretty-box--container">
+        <div
+          #header
+          [hidden]="!hasHeader"
+          class="tak-pretty-box--header"
+          [style]="headerHeightPx ? 'height:' + headerHeightPx + 'px' : ''"
+        >
+          <ng-content select="[tak-pretty-box-header]"></ng-content>
+        </div>
+
+        <div class="tak-pretty-box--scroll" #scroll [style]="'height: ' + minHeightFt">
+          <ng-content select="[tak-pretty-box-content]"></ng-content>
+        </div>
+
+        <div
+          #footer
+          [hidden]="!hasFooter"
+          class="tak-pretty-box--footer"
+          [style]="footerHeightPx ? 'height:' + footerHeightPx + 'px' : ''"
+        >
+          <ng-content select="[tak-pretty-box-footer]"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

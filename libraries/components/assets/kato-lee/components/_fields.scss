@@ -1,0 +1,166 @@
+.mat-form-field-invalid {
+  &.tak__date-not-input__picker-container {
+    .mat-datepicker-toggle > button {
+      color: var(--tak-form-field-error-color) !important;
+    }
+  }
+}
+.tak {
+  &-custom-error {
+    text-align: left;
+    margin-left: 5px;
+    font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--tak-form-field-error-color);
+    font-size: 12px;
+  }
+  &-hint {
+    color: var(--tak-form-field-hint-color);
+  }
+  &__date-not-input {
+    input {
+      display: none !important;
+    }
+    &__picker-container {
+      margin-top: 5px;
+    }
+    &__field-container {
+      margin-top: -18px;
+      & .mat-form-field {
+        visibility: hidden;
+        width: 1px !important;
+        font-size: 1px !important;
+      }
+    }
+  }
+  &-form-container {
+    mat-form-field {
+      width: calc(100% - 10px);
+    }
+
+    .money-input {
+      font-weight: bolder !important;
+    }
+
+    .mat-form-field-invalid {
+      .mat-datepicker-toggle > button {
+        color: var(--tak-form-field-error-color) !important;
+      }
+      .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before,
+      .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::after {
+        border-bottom-color: var(--tak-form-field-error-color) !important;
+      }
+      .tak-hint {
+        color: var(--tak-form-field-error-color) !important;
+      }
+      .mat-mdc-text-field-wrapper {
+        .mat-mdc-form-field-icon-suffix button {
+          color: var(--tak-form-field-error-color) !important;
+        }
+
+        .mat-floating-label,
+        .mdc-floating-label:hover,
+        .mdc-form-field-icon-suffix,
+        .mdc-text-field,
+        .mdc-text-field__input,
+        .mdc-button-ripple {
+          color: var(--tak-form-field-error-color) !important;
+        }
+      }
+      .mat-mdc-text-field--filled:not(.mat-mdc-text-field--disabled) {
+        .mdc-line-ripple::before,
+        .mdc-line-ripple::after,
+        .mdc-line-ripple:hover {
+          border-bottom-color: var(--tak-form-field-error-color) !important;
+        }
+      }
+      .mat-notched-outline__leading {
+        border-color: var(--tak-form-field-error-color) !important;
+      }
+      .mat-notched-outline__notch {
+        border-top-color: var(--tak-form-field-error-color) !important;
+        border-bottom-color: var(--tak-form-field-error-color) !important;
+      }
+      .mat-notched-outline__trailing {
+        border-color: var(--tak-form-field-error-color) !important;
+      }
+    }
+  }
+  &-autocomplete-not-records {
+    color: var(--tak-form-field-error-color);
+  }
+  &-option-span-extra {
+    color: gray;
+    &::before {
+      content: '\A';
+      white-space: pre;
+    }
+  }
+}
+
+.mat-text-field--filled:not(.mat-text-field--disabled).mat-text-field--focused .mat-floating-label,
+.mat-text-field--filled:not(.mat-text-field--disabled).mat-text-field--focused
+  .mat-floating-label--float-above {
+  .mat-form-field-required-marker,
+  .tak-field__danger-x {
+    color: var(--tak-form-field-error-color) !important;
+  }
+}
+
+.tak__date-not-input__picker-container.mat-form-field-invalid
+  .mat-datepicker-toggle
+  .mat-icon-button {
+  color: var(--tak-form-field-error-color) !important;
+}
+mat-option {
+  line-height: 20px !important;
+}
+mat-form-field {
+  width: 100%;
+}
+
+.mat-option-text {
+  font-size: 14px;
+}
+.mat-mdc-select-panel,
+.mat-mdc-autocomplete-panel,
+.mat-calendar {
+  background-color: white !important;
+}
+
+.mat-calendar {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+}
+
+.mat-mdc-select-panel .mat-mdc-option {
+  height: 30px !important;
+  font-size: 14px;
+  line-height: 17px;
+  min-height: 36px;
+}
+.mat-mdc-option {
+  .mat-pseudo-checkbox-minimal {
+    display: none !important;
+  }
+  .mat-list-item__primary-text {
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.mat-mdc-menu-content {
+  background-color: white;
+}
+
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(
+    .mat-mdc-option-multiple
+  ) {
+  background-color: var(
+    --mat-option-focus-state-layer-color,
+    color-mix(
+      in srgb,
+      var(--mat-sys-on-surface) calc(var(--mat-sys-focus-state-layer-opacity) * 100%),
+      transparent
+    )
+  ) !important;
+}
