@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -32,6 +33,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './component.html',
   styleUrl: './component.scss',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopbarComponent implements OnInit, OnDestroy {
   @Input({ required: true }) config!: DashboardConfig;

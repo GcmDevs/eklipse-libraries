@@ -4,8 +4,7 @@
       <button class="home-link" aria-label="Abrir menú" (click)="menuClicked.emit()">
         <lucide-icon [img]="icons.Menu" [size]="18" />
       </button>
-      <a routerLink="/" class="logo" aria-label="Ir al inicio">
-        <!-- <lucide-angular style="color: rgb(0, 150, 136)" [img]="icons.Activity" [size]="20" /> -->
+      <a [routerLink]="config.homeUrl" class="logo" aria-label="Ir al inicio">
         <img [src]="config.icon" style="width: 28px" />
       </a>
       <span class="brand-name">{{ config.enterpriseName }}</span>
@@ -17,7 +16,6 @@
         <div class="avatar">{{ config.userInitials }}</div>
         <div class="user-info">
           <span class="user-name">{{ config.userFullName }}</span>
-          <!-- <span class="user-role">{{ config.roleName }}</span> -->
         </div>
       </button>
 

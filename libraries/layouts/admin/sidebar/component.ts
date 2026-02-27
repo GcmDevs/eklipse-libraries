@@ -8,6 +8,7 @@ import {
   SimpleChanges,
   ElementRef,
   ViewEncapsulation,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LucideAngularModule, LucideIconData } from 'lucide-angular';
@@ -22,6 +23,7 @@ import { NavIconComponent } from '../nav-icons';
   templateUrl: './component.html',
   styleUrl: './component.scss',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent implements OnChanges {
   @Input({ required: true }) modules!: NavModule[];
