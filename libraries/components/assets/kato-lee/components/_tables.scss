@@ -69,7 +69,6 @@ $CTM_TABLE_VAL_6: 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: Roboto, sans-serif;
     color: var(--tak-table-header-color);
     height: $CTM_TABLE_HEADER_HEIGHT;
     border-top-left-radius: $CTM_TABLE_BORDER_RADIUS;
@@ -202,7 +201,6 @@ $CTM_TABLE_VAL_6: 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: Roboto, sans-serif;
     background-color: var(--tak-table-background-color);
     ~ .tak-table__content {
       border-top-left-radius: 0px;
