@@ -1,12 +1,12 @@
 <div class="wrapper">
-  <app-sidebar
+  <gcm-sidebar
     [iconMap]="iconMap"
     [modules]="modules"
     [config]="config"
     [open]="sidebarOpen()"
     (closed)="closeSidebar()"
   />
-  <app-topbar [config]="config" (menuClicked)="openSidebar()" (logout)="this.logout.emit()" />
+  <gcm-topbar [config]="config" (menuClicked)="openSidebar()" (logout)="this.logout.emit()" />
   <main class="main">
     <router-outlet />
   </main>

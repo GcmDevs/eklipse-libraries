@@ -27,7 +27,7 @@ import {
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-topbar',
+  selector: 'gcm-topbar',
   standalone: true,
   imports: [RouterLink, LucideAngularModule],
   templateUrl: './component.html',

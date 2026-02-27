@@ -17,7 +17,7 @@ import { DashboardConfig, NavModule } from '../config';
 import { NavIconComponent } from '../nav-icons';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'gcm-sidebar',
   standalone: true,
   imports: [RouterModule, LucideAngularModule, NavIconComponent, ValidateAccessPipe],
   templateUrl: './component.html',
