@@ -15,3 +15,4 @@ export * from './text-area/component';
 export * from './date-range/component';
 export * from './number/component';
 export * from './remote-autocomplete/component';
+export * from './mat-date-picker.translation';

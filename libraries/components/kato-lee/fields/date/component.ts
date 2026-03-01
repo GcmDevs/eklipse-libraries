@@ -22,10 +22,11 @@ import {
 } from '@angular/forms';
 import { TAK_DEFAULT_APPEARANCE_FORM, TakAutocompleteFieldType } from '../common';
 import { CommonModule } from '@angular/common';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TakErrorComponent } from '../error/component';
 import { MatInputModule } from '@angular/material/input';
+import { getSpanishMatDatePickerIntl } from '../mat-date-picker.translation';
 
 @Component({
   standalone: true,
@@ -39,7 +40,10 @@ import { MatInputModule } from '@angular/material/input';
     MatDatepickerModule,
     MatInputModule,
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' }],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+    { provide: MatDatepickerIntl, useValue: getSpanishMatDatePickerIntl() },
+  ],
   selector: 'tak-date-field',
   templateUrl: './component.html',
 })
@@ -70,7 +74,7 @@ export class TakDateFieldComponent
   constructor(
     @Self() @Optional() private _ngControl: NgControl,
     @Optional() private _formGroupDirective: FormGroupDirective,
-    private _cd: ChangeDetectorRef
+    private _cd: ChangeDetectorRef,
   ) {
     if (_ngControl) this._ngControl.valueAccessor = this;
     if (_formGroupDirective) {

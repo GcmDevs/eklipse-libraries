@@ -4,10 +4,11 @@ import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { MAT_DATE_LOCALE, MatNativeDateModule, ThemePalette } from '@angular/material/core';
 import { TakAutocompleteFieldType, TAK_DEFAULT_APPEARANCE_FORM } from '../common';
 import { CommonModule } from '@angular/common';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TakErrorComponent } from '../error/component';
 import { MatInputModule } from '@angular/material/input';
+import { getSpanishMatDatePickerIntl } from '../mat-date-picker.translation';
 
 @Component({
   standalone: true,
@@ -21,7 +22,10 @@ import { MatInputModule } from '@angular/material/input';
     MatDatepickerModule,
     MatInputModule,
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' }],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
+    { provide: MatDatepickerIntl, useValue: getSpanishMatDatePickerIntl() },
+  ],
   selector: 'tak-date-range-field',
   templateUrl: './component.html',
 })
