@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -26,12 +27,13 @@ import {
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-topbar',
+  selector: 'gcm-topbar',
   standalone: true,
   imports: [RouterLink, LucideAngularModule],
   templateUrl: './component.html',
   styleUrl: './component.scss',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopbarComponent implements OnInit, OnDestroy {
   @Input({ required: true }) config!: DashboardConfig;

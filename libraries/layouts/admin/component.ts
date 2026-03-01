@@ -7,6 +7,7 @@ import {
   Output,
   signal,
   Input,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { TopbarComponent } from './topbar/component';
 import { SidebarComponent } from './sidebar/component';
@@ -20,6 +21,7 @@ import { LucideIconData } from 'lucide-angular';
   templateUrl: './component.html',
   styleUrl: './component.scss',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminLayoutComponent {
   @Input({ required: true }) config!: DashboardConfig;

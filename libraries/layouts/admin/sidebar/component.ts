@@ -8,6 +8,7 @@ import {
   SimpleChanges,
   ElementRef,
   ViewEncapsulation,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LucideAngularModule, LucideIconData } from 'lucide-angular';
@@ -16,12 +17,13 @@ import { DashboardConfig, NavModule } from '../config';
 import { NavIconComponent } from '../nav-icons';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'gcm-sidebar',
   standalone: true,
   imports: [RouterModule, LucideAngularModule, NavIconComponent, ValidateAccessPipe],
   templateUrl: './component.html',
   styleUrl: './component.scss',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent implements OnChanges {
   @Input({ required: true }) modules!: NavModule[];
