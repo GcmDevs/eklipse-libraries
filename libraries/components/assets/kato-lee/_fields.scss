@@ -6,7 +6,6 @@
     top: 30px !important;
   }
 }
-
 .mdc-notched-outline:not(.mdc-notched-outline--notched) {
   .mdc-notched-outline__leading,
   .mdc-notched-outline__trailing,
@@ -53,24 +52,10 @@
     }
     .mat-form-field-invalid {
       .mat-mdc-text-field-wrapper {
-        .mat-mdc-floating-label
-        /* .mat-mdc-form-field-icon-suffix,
-        .mat-mdc-text-field,
-        .mat-mdc-text-field__input,
-        .mat-mdc-button-ripple */ {
+        .mat-mdc-floating-label {
           color: var(--tak-form-field-error-color) !important;
         }
-        /* & .mat-mdc-form-field-flex .mat-mdc-datepicker-toggle .mat-icon-button {
-          color: var(--tak-form-field-error-color) !important;
-        } */
       }
-      /* .mat-mdc-text-field--filled:not(.mat-mdc-text-field--disabled) {
-        .mat-mdc-line-ripple::before,
-        .mat-mdc-line-ripple::after,
-        .mat-mdc-line-ripple:hover {
-          border-bottom-color: var(--tak-form-field-error-color) !important;
-        }
-      } */
       .mat-mdc-input-element {
         color: var(--tak-form-field-error-color) !important;
       }
@@ -119,19 +104,8 @@
     color: var(--tak-form-field-error-color);
   }
 }
-/* 
-.mat-text-field--filled:not(.mat-text-field--disabled).mat-text-field--focused .mat-floating-label,
-.mat-text-field--filled:not(.mat-text-field--disabled).mat-text-field--focused
-  .mat-floating-label--float-above {
-  .mat-form-field-required-marker,
-  .tak-field__danger-x {
-    color: var(--tak-form-field-error-color) !important;
-  }
+mat-option .mdc-list-item__primary-text {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
 }
-
-.tak__date-not-input__picker-container.mat-form-field-invalid
-  .mat-datepicker-toggle
-  .mat-icon-button {
-  color: var(--tak-form-field-error-color) !important;
-}
- */
