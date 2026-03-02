@@ -1,6 +1,6 @@
 .admin-layout {
   .topbar {
-    background: var(--principal-500);
+    background: var(--primary-500);
     padding: 0 32px;
     height: 50px;
     display: flex;
@@ -140,7 +140,7 @@
   }
   .module-topbar {
     z-index: 200;
-    background: var(--principal-500);
+    background: var(--primary-500);
     padding: 0 32px;
     height: 50px;
     display: flex;
@@ -182,6 +182,11 @@
     display: flex;
     align-items: center;
     gap: 0;
+  }
+  @media (max-width: 850px) {
+    .topbar-breadcrumbs {
+      display: none !important;
+    }
   }
   .topbar-bc-segment {
     display: flex;
