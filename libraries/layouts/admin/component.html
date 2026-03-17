@@ -8,6 +8,7 @@
   />
   <gcm-topbar [config]="config" (menuClicked)="openSidebar()" (logout)="this.logout.emit()" />
   <main class="main">
+    <ng-content select="[active-all-time]" />
     <router-outlet />
   </main>
 </div>

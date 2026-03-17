@@ -14,6 +14,7 @@ export class App implements OnInit {
   protected readonly title = signal('eklipse-utilities');
 
   resourcesLoaded = signal(false);
+  showActiveAllTime = signal(false);
 
   config: DashboardConfig = {
     icon: 'favicon.ico',

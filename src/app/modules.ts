@@ -3,12 +3,12 @@ import { NavModule, setAleatorySidebarThemeToAllModules } from '@eklipse/ng-layo
 export const NAV_MODULES: NavModule[] = setAleatorySidebarThemeToAllModules([
   {
     isSingleRoute: true,
-    href: 'seguridad/permisos/create',
-    id: 'home23',
+    href: 'gemi-chatbot',
+    id: 'gemi',
     label: 'Gemi',
     icon: 'shield-check',
-    description: 'Home.',
-    authorities: ['admin', 'home'],
+    description: 'Chatbot de gemi.',
+    authorities: ['admin', 'gemi'],
     submodules: [],
   },
   {

@@ -24,13 +24,13 @@
   "private": true,
   "dependencies": {
     "@angular/cdk": "^20.2.14",
-    "@angular/common": "^20.3.0",
-    "@angular/compiler": "^20.3.0",
-    "@angular/core": "^20.3.0",
-    "@angular/forms": "^20.3.0",
+    "@angular/common": "^20.3.18",
+    "@angular/compiler": "^20.3.18",
+    "@angular/core": "^20.3.18",
+    "@angular/forms": "^20.3.18",
     "@angular/material": "^20.2.14",
-    "@angular/platform-browser": "^20.3.0",
-    "@angular/router": "^20.3.0",
+    "@angular/platform-browser": "^20.3.18",
+    "@angular/router": "^20.3.18",
     "file-saver": "^2.0.5",
     "lucide-angular": "^0.575.0",
     "rxjs": "~7.8.0",
@@ -39,9 +39,9 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular/build": "^20.3.0",
-    "@angular/cli": "^20.3.0",
-    "@angular/compiler-cli": "^20.3.0",
+    "@angular/build": "^20.3.20",
+    "@angular/cli": "^20.3.20",
+    "@angular/compiler-cli": "^20.3.18",
     "@types/file-saver": "^2.0.7",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.9.0",
@@ -50,7 +50,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "ng-packagr": "^20.3.0",
+    "ng-packagr": "^20.3.2",
     "prettier": "^3.8.1",
     "typescript": "~5.9.2"
   }

@@ -16,6 +16,11 @@ export const routes: Routes = [
         loadChildren: () => import('./modules/permisos/routes').then((m) => m.routes),
         data: { authorities: ['seguridad'] },
       },
+      {
+        path: 'gemi-chatbot',
+        loadComponent: () => import('./app.gemi').then((m) => m.GemiComponent),
+        data: { title: 'Herramientas IA|Gemi|Chat' },
+      },
     ],
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
