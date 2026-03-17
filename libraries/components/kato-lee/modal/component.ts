@@ -25,7 +25,7 @@ export class TakModalComponent implements OnInit {
     href: ElementRef,
     private _dialogRef: MatDialogRef<TakModalComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public data: { content: string; title: string; options?: TakModalConfig; type: TakModalType }
+    public data: { content: string; title: string; options?: TakModalConfig; type: TakModalType },
   ) {
     href.nativeElement.classList.add('tak-modal');
   }

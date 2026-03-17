@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  standalone:true,
+  standalone: true,
   selector: 'tak-simple-card',
   template: `
     @if (hasTopLine) {
@@ -11,7 +11,7 @@ import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@a
       ></div>
     }
     <div class="tak-simple-card" [class.no-card-topline]="!hasTopLine">
-      <ng-content/>
+      <ng-content />
     </div>
   `,
   encapsulation: ViewEncapsulation.None,

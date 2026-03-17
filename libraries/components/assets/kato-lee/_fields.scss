@@ -108,3 +108,8 @@ mat-option .mdc-list-item__primary-text {
   overflow: hidden !important;
   text-overflow: ellipsis !important;
 }
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field
+  .mdc-notched-outline__notch {
+  border-left: none !important;
+  border-right: none !important;
+}

@@ -81,7 +81,7 @@ export class TakNumberFieldComponent implements OnInit, OnDestroy, ControlValueA
   constructor(
     @Self() @Optional() private _ngControl: NgControl,
     @Optional() private _formGroupDirective: FormGroupDirective,
-    private _cd: ChangeDetectorRef
+    private _cd: ChangeDetectorRef,
   ) {
     if (_ngControl) this._ngControl.valueAccessor = this;
 
@@ -126,7 +126,7 @@ export class TakNumberFieldComponent implements OnInit, OnDestroy, ControlValueA
   public onChange(event: any): void {
     this._value = event.target.value;
     this.onChangeFn(
-      ['', null, undefined].indexOf(event.target.value) < 0 ? +event.target.value : null
+      ['', null, undefined].indexOf(event.target.value) < 0 ? +event.target.value : null,
     );
     if (this.control.touched) this._onValidate();
   }

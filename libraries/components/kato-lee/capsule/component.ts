@@ -41,7 +41,7 @@ export class TakCapsuleComponent {
       if (predefinedGrid === 'big') customizedGrids = [12, 12, 10, 10, 8, 6];
     } else customizedGrids = grids || [12, 12, 10, 8, 6, 4];
 
-    customizedGrids.map(r => {
+    customizedGrids.map((r) => {
       if (r % 2) r++;
 
       if (r >= 1 && r <= 12) {

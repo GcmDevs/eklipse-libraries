@@ -15,7 +15,7 @@ export class TakModal {
   public confirm(
     content: string,
     title: string = '',
-    options?: TakModalConfig
+    options?: TakModalConfig,
   ): Observable<boolean> {
     return this._generateDialog(content, title, 'confirm', options);
   }
@@ -24,7 +24,7 @@ export class TakModal {
     content: string,
     title: string,
     type: TakModalType,
-    options?: TakModalConfig
+    options?: TakModalConfig,
   ) {
     if (!options) options = {};
     if (!options.textAlign) options.textAlign = 'justify';

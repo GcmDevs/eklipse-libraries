@@ -81,7 +81,7 @@ export class TakGeneralFieldComponent implements OnInit, OnDestroy, ControlValue
   constructor(
     @Self() @Optional() private _ngControl: NgControl,
     @Optional() private _formGroupDirective: FormGroupDirective,
-    private _cd: ChangeDetectorRef
+    private _cd: ChangeDetectorRef,
   ) {
     if (_ngControl) this._ngControl.valueAccessor = this;
 

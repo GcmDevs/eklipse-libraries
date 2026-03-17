@@ -85,7 +85,7 @@ export class TakAutocompleteFieldComponent implements OnInit, OnDestroy, Control
   constructor(
     @Self() @Optional() private _ngControl: NgControl,
     @Optional() private _formGroupDirective: FormGroupDirective,
-    private _cd: ChangeDetectorRef
+    private _cd: ChangeDetectorRef,
   ) {
     if (_ngControl) this._ngControl.valueAccessor = this;
     if (_formGroupDirective) {
@@ -107,7 +107,7 @@ export class TakAutocompleteFieldComponent implements OnInit, OnDestroy, Control
 
     this._filteredOptions = this.control.valueChanges.pipe(
       takeUntil(this._unsubscribe$),
-      map(() => this._filter())
+      map(() => this._filter()),
     );
 
     if (this.isRemoteSearch) {
@@ -130,8 +130,8 @@ export class TakAutocompleteFieldComponent implements OnInit, OnDestroy, Control
       typeof `${this._value}` === 'string'
         ? `${this._value}`.toLowerCase()
         : `${this.control.value[this.option]}`.toLowerCase();
-    const option = this.suggestions.filter(res =>
-      `${res[this.option]}`.toLowerCase().includes(value)
+    const option = this.suggestions.filter((res) =>
+      `${res[this.option]}`.toLowerCase().includes(value),
     );
     if (!option.length) this._notSuggestions = true;
     else this._notSuggestions = false;
@@ -161,8 +161,8 @@ export class TakAutocompleteFieldComponent implements OnInit, OnDestroy, Control
 
       this.onChangeFn(
         this.suggestions.filter(
-          sug => `${sug[this.option]}`.toLowerCase() === `${`${this._value}`}`.toLowerCase()
-        )[0] || null
+          (sug) => `${sug[this.option]}`.toLowerCase() === `${`${this._value}`}`.toLowerCase(),
+        )[0] || null,
       );
 
       if (this.control.touched) {
@@ -175,8 +175,8 @@ export class TakAutocompleteFieldComponent implements OnInit, OnDestroy, Control
     if (!this.isRemoteSearch) {
       const suggestionsFiltered = value
         ? this.suggestions.filter(
-            el =>
-              `${el[this.option]}`.toLowerCase().trim() === (value as string).toLowerCase().trim()
+            (el) =>
+              `${el[this.option]}`.toLowerCase().trim() === (value as string).toLowerCase().trim(),
           )
         : [];
 
@@ -219,8 +219,8 @@ export class TakAutocompleteFieldComponent implements OnInit, OnDestroy, Control
 
     this.onChangeFn(
       this.suggestions.filter(
-        sug => `${sug[this.option]}`.toLowerCase() === `${this._value}`.toLowerCase()
-      )[0] || null
+        (sug) => `${sug[this.option]}`.toLowerCase() === `${this._value}`.toLowerCase(),
+      )[0] || null,
     );
   }
 

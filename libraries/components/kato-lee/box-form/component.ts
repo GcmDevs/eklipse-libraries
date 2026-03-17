@@ -63,7 +63,7 @@ export class TakBoxFormComponent {
 
   constructor(
     private _href: ElementRef,
-    private _cd: ChangeDetectorRef
+    private _cd: ChangeDetectorRef,
   ) {
     _href.nativeElement.classList.add('tak-box-form');
   }
