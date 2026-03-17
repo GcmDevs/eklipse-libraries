@@ -109,8 +109,13 @@ $colors:
   .bg-color--#{$color}-constrant {
     background-color: var(--#{$color}-constrant) !important;
   }
-  .vcl-top-line-card--#{$color}::before {
-    background: var(--#{$color}-constrant);
+  .vcl-top-line-card--#{$color} {
+    &::before {
+      background: var(--#{$color}-constrant);
+    }
+    &.add-border-color-on-hover:hover {
+      border-color: var(--#{$color}-constrant) !important;
+    }
   }
   .vcl-icon--#{$color} {
     background: var(--#{$color}-constrant);
