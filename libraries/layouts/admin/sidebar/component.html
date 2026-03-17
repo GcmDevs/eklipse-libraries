@@ -39,7 +39,7 @@
         <button
           class="module-btn"
           [class.module-btn-active]="isModuleOpen(mod.id)"
-          (click)="toggleModule(mod.id)"
+          (click)="toggleModule(mod)"
           [attr.aria-expanded]="isModuleOpen(mod.id)"
         >
           <div class="module-icon vcl-icon--{{ mod.accent }}">

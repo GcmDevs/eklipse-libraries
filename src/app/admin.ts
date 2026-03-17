@@ -1,7 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DashboardConfig } from '@eklipse/ng-layouts/admin';
-import { SEGURIDAD_SNAV_ITEMS } from './modules';
+import { NAV_MODULES } from './modules';
 import { Layers, LucideIconData, ShieldCheck, Lock } from 'lucide-angular';
 
 @Component({
@@ -30,7 +30,7 @@ export class AdminDashboardComponent implements OnInit {
     homeUrl: '',
   };
 
-  modules = SEGURIDAD_SNAV_ITEMS;
+  modules = NAV_MODULES;
 
   iconMap: Record<string, LucideIconData> = {
     'shield-check': ShieldCheck,

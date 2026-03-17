@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, ViewEncapsulation } from '@angular/core';
 import { DashboardConfig, TasksGridComponent } from '@eklipse/ng-layouts/admin';
 import { ICON_MAP } from '../../icon-map';
-import { SEGURIDAD_SNAV_ITEMS } from '../../modules';
+import { NAV_MODULES } from '../../modules';
 
 @Component({
   selector: 'app-home-page',
@@ -28,7 +28,7 @@ export class Page {
     homeUrl: '',
   };
 
-  modules = SEGURIDAD_SNAV_ITEMS;
+  modules = NAV_MODULES;
 
   greeting = computed(() => {
     const hour = new Date().getHours();

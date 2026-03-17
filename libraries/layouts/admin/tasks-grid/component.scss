@@ -24,7 +24,7 @@
   border: none;
   font-family: inherit;
   font-size: 13px;
-  color: var(--teal-600);
+  color: var(--primary-600);
   cursor: pointer;
   padding: 4px 6px;
   border-radius: 6px;
@@ -35,8 +35,8 @@
 }
 
 .breadcrumb-link:hover {
-  background: var(--teal-50);
-  color: var(--teal-700);
+  background: var(--primary-50);
+  color: var(--primary-700);
 }
 
 .breadcrumb-current {
@@ -150,14 +150,13 @@
   &:hover {
     box-shadow: var(--shadow-lg);
     transform: translateY(-2px);
-    border-color: var(--teal-200);
 
     &::before {
       opacity: 1;
     }
 
     .task-arrow {
-      color: var(--teal-500);
+      color: var(--primary-500);
       transform: translateX(2px);
     }
   }
@@ -195,8 +194,8 @@
   justify-content: center;
 
   &--teal {
-    background: var(--teal-50);
-    color: var(--teal-700);
+    background: var(--primary-50);
+    color: var(--primary-700);
   }
   &--amber {
     background: #fff8e1;
@@ -266,8 +265,8 @@
   color: var(--neutral-600);
 
   &--teal {
-    background: var(--teal-50);
-    color: var(--teal-700);
+    background: var(--primary-50);
+    color: var(--primary-700);
   }
 }
 

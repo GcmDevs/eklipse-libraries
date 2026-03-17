@@ -24,6 +24,8 @@ export interface NavSubmodule {
 }
 
 export interface NavModule {
+  isSingleRoute?: boolean;
+  href?: string;
   id: string;
   label: string;
   icon: string;

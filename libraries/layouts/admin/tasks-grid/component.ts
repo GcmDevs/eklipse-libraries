@@ -1,6 +1,6 @@
 import { Component, signal, computed, Input } from '@angular/core';
 import { NgTemplateOutlet, NgClass } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   LucideAngularModule,
   ArrowRight,
@@ -22,6 +22,7 @@ interface BreadcrumbItem {
 }
 
 interface CardItem {
+  isSingleRoute: boolean;
   id: string;
   label: string;
   description?: string;
@@ -81,6 +82,7 @@ export class TasksGridComponent {
 
     if (lv === 'modules') {
       return this.modules.map((m) => ({
+        isSingleRoute: m.isSingleRoute || false,
         ...m,
         count: m.submodules
           .filter((e) => !e.wasDisabled)
@@ -89,12 +91,14 @@ export class TasksGridComponent {
     }
     if (lv === 'submodules' && mod) {
       return mod.submodules.map((s) => ({
+        isSingleRoute: false,
         ...s,
         count: s.routes.filter((r) => !r.wasDisabled).length,
       }));
     }
     if (lv === 'routes' && sub) {
       return sub.routes.map((r) => ({
+        isSingleRoute: false,
         ...r,
         accent: sub.accent,
         href: r.href,
@@ -102,6 +106,8 @@ export class TasksGridComponent {
     }
     return [];
   });
+
+  constructor(private _router: Router) {}
 
   sectionTitle = computed(() => {
     const lv = this.level();
@@ -170,11 +176,15 @@ export class TasksGridComponent {
   }
 
   onCardClick(item: CardItem): void {
-    const lv = this.level();
-    if (lv === 'modules') {
-      this.goToSubmodules(item.id);
-    } else if (lv === 'submodules') {
-      this.goToRoutes(item.id);
+    if (item.isSingleRoute) {
+      this._router.navigate([item.href]);
+    } else {
+      const lv = this.level();
+      if (lv === 'modules') {
+        this.goToSubmodules(item.id);
+      } else if (lv === 'submodules') {
+        this.goToRoutes(item.id);
+      }
     }
     // Routes with href are handled via routerLink in the template
   }

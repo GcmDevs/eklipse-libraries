@@ -1,11 +1,20 @@
 import { NavModule, setAleatorySidebarThemeToAllModules } from '@eklipse/ng-layouts/admin';
 
-export const SEGURIDAD_SNAV_ITEMS: NavModule[] = setAleatorySidebarThemeToAllModules([
+export const NAV_MODULES: NavModule[] = setAleatorySidebarThemeToAllModules([
+  {
+    isSingleRoute: true,
+    href: 'seguridad/permisos/create',
+    id: 'home23',
+    label: 'Gemi',
+    icon: 'shield-check',
+    description: 'Home.',
+    authorities: ['admin', 'home'],
+    submodules: [],
+  },
   {
     id: 'seguridad',
     label: 'Seguridad',
     icon: 'shield-check',
-    //accent: 'amber',
     description: 'Autenticación, permisos, auditoría y control de acceso al sistema.',
     authorities: ['admin', 'seguridad'],
     submodules: [
@@ -13,7 +22,6 @@ export const SEGURIDAD_SNAV_ITEMS: NavModule[] = setAleatorySidebarThemeToAllMod
         id: 'permisos',
         label: 'Permisos',
         icon: 'lock',
-        //accent: 'purple',
         description: 'Gestión de módulos, roles y permisos de usuarios.',
         authorities: ['admin', 'seguridad-permisos'],
         routes: [
@@ -24,7 +32,6 @@ export const SEGURIDAD_SNAV_ITEMS: NavModule[] = setAleatorySidebarThemeToAllMod
             description: 'Definir la estructura de módulos y sus permisos asociados.',
             href: 'seguridad/permisos/create',
             authorities: ['admin', 'seguridad-permisos-create'],
-            wasDisabled: false,
           },
           {
             id: 'manage-by-usuario',
@@ -33,7 +40,6 @@ export const SEGURIDAD_SNAV_ITEMS: NavModule[] = setAleatorySidebarThemeToAllMod
             description: 'Asignar y revocar permisos individuales por usuario.',
             href: 'seguridad/permisos/manage-by-usuario',
             authorities: ['admin', 'seguridad-permisos-manage-by-usuario'],
-            wasDisabled: true,
           },
           {
             id: 'manage-by-rol',

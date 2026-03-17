@@ -60,39 +60,41 @@
   <!-- Cards grid -->
   <div class="tasks-grid" [class]="animClass()">
     @for (item of items(); track item.id) {
-      <!-- Route with href = real link -->
-      @if (level() === 'routes' && item.href) {
-        <a
-          [routerLink]="item.href"
-          class="task-card vcl-top-line-card--{{ item.accent }}"
-          [class.force-d-none]="
-            ([config.authorities, item.disableOnContexts!]
-              | validateAccess: [config.contextCode, item.authorities!]) ||
-            item.forceDisabledContent
-          "
-        >
-          <ng-container
-            [ngTemplateOutlet]="cardTpl"
-            [ngTemplateOutletContext]="{ $implicit: item }"
-          />
-        </a>
-      } @else {
-        <!-- Drill-down button -->
-        <button
-          type="button"
-          class="task-card vcl-top-line-card--{{ item.accent }}"
-          [class.force-d-none]="
-            ([config.authorities, item.disableOnContexts!]
-              | validateAccess: [config.contextCode, item.authorities!]) ||
-            item.forceDisabledContent
-          "
-          (click)="onCardClick(item)"
-        >
-          <ng-container
-            [ngTemplateOutlet]="cardTpl"
-            [ngTemplateOutletContext]="{ $implicit: item }"
-          />
-        </button>
+      @if (item.id !== 'home') {
+        <!-- Route with href = real link -->
+        @if (level() === 'routes' && item.href) {
+          <a
+            [routerLink]="item.href"
+            class="task-card vcl-top-line-card--{{ item.accent }} add-border-color-on-hover"
+            [class.force-d-none]="
+              ([config.authorities, item.disableOnContexts!]
+                | validateAccess: [config.contextCode, item.authorities!]) ||
+              item.forceDisabledContent
+            "
+          >
+            <ng-container
+              [ngTemplateOutlet]="cardTpl"
+              [ngTemplateOutletContext]="{ $implicit: item }"
+            />
+          </a>
+        } @else {
+          <!-- Drill-down button -->
+          <button
+            type="button"
+            class="task-card vcl-top-line-card--{{ item.accent }} add-border-color-on-hover"
+            [class.force-d-none]="
+              ([config.authorities, item.disableOnContexts!]
+                | validateAccess: [config.contextCode, item.authorities!]) ||
+              item.forceDisabledContent
+            "
+            (click)="onCardClick(item)"
+          >
+            <ng-container
+              [ngTemplateOutlet]="cardTpl"
+              [ngTemplateOutletContext]="{ $implicit: item }"
+            />
+          </button>
+        }
       }
     }
   </div>
@@ -109,12 +111,12 @@
       <span class="material-icons">{{ item.icon }}</span>
     }
     <div class="task-card__top-right">
-      @if (item.count !== undefined) {
+      @if (item.count !== undefined && !item.isSingleRoute) {
         <span class="count-badge">
           {{ item.count }} {{ level() === 'modules' ? 'opciones' : 'rutas' }}
         </span>
+        <lucide-icon [img]="icons.ArrowRight" [size]="18" class="task-arrow" />
       }
-      <lucide-icon [img]="icons.ArrowRight" [size]="18" class="task-arrow" />
     </div>
   </div>
 
@@ -123,7 +125,7 @@
     <p class="task-desc">{{ item.description }}</p>
   </div>
 
-  @if (level() === 'routes') {
+  @if (level() === 'routes' || item.isSingleRoute) {
     <div class="task-meta">
       <span class="task-tag task-tag--teal">
         {{ item.href ? 'Abrir' : 'Sin ruta' }}

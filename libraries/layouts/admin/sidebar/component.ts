@@ -10,7 +10,7 @@ import {
   ViewEncapsulation,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LucideAngularModule, LucideIconData } from 'lucide-angular';
 import { ValidateAccessPipe } from '../functions';
 import { DashboardConfig, NavModule } from '../config';
@@ -19,7 +19,7 @@ import { NavIconComponent } from '../nav-icons';
 @Component({
   selector: 'gcm-sidebar',
   standalone: true,
-  imports: [RouterModule, LucideAngularModule, NavIconComponent, ValidateAccessPipe],
+  imports: [RouterLink, LucideAngularModule, NavIconComponent, ValidateAccessPipe],
   templateUrl: './component.html',
   styleUrl: './component.scss',
   encapsulation: ViewEncapsulation.None,
@@ -36,7 +36,10 @@ export class SidebarComponent implements OnChanges {
   expandedModule: string | null = null;
   expandedSubmodule: string | null = null;
 
-  constructor(href: ElementRef<HTMLElement>) {
+  constructor(
+    href: ElementRef<HTMLElement>,
+    private _router: Router,
+  ) {
     href.nativeElement.classList.add('admin-layout');
   }
 
@@ -57,8 +60,12 @@ export class SidebarComponent implements OnChanges {
     }
   }
 
-  toggleModule(id: string): void {
-    this.expandedModule = this.expandedModule === id ? null : id;
+  toggleModule(mod: NavModule): void {
+    if (mod.isSingleRoute) {
+      this._router.navigate([mod.href]);
+      this.closed.emit();
+    }
+    this.expandedModule = this.expandedModule === mod.id ? null : mod.id;
     this.expandedSubmodule = null;
   }
 
