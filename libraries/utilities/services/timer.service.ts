@@ -1,5 +1,11 @@
 export type TimeLang = 'es' | 'en';
 
+export interface TimeOptions {
+  from?: Date;
+  ago?: boolean;
+  lower?: boolean;
+}
+
 export enum FormatTimes {
   /** Example: 2022-02-25 */
   YYYY_MM_DD = 1,
@@ -27,8 +33,8 @@ export enum FormatTimes {
   h_mm_a = 12,
 }
 
-function timeFromNow(date: Date): string {
-  const diff = Date.now() - date.getTime();
+function timeFromNow(date: Date, options: TimeOptions = {}): string {
+  const diff = (options.from ? options.from.getTime() : Date.now()) - date.getTime();
   const seconds = Math.floor(diff / 1000);
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(minutes / 60);
@@ -36,18 +42,25 @@ function timeFromNow(date: Date): string {
   const months = Math.floor(days / 30);
   const years = Math.floor(days / 365);
 
-  if (seconds < 60) return `hace ${seconds} segundos`;
-  if (minutes < 60) return `hace ${minutes} minutos`;
-  if (hours < 24) return `hace ${hours} horas`;
-  if (days < 30) return `hace ${days} días`;
-  if (months < 12) return `hace ${months} meses`;
-  return `hace ${years} años`;
+  const agoExt = options.ago ? 'hace ' : '';
+
+  const format = (value: number, unit: string) => {
+    const text = `${agoExt}${value} ${unit}${value === 1 ? '' : 's'}`;
+    return !options.lower ? text.toUpperCase() : text;
+  };
+
+  if (seconds < 60) return format(seconds, 'segundo');
+  if (minutes < 60) return format(minutes, 'minuto');
+  if (hours < 24) return format(hours, 'hora');
+  if (days < 30) return format(days, 'día');
+  if (months < 12) return format(months, 'mes');
+  return format(years, 'año');
 }
 
 export const formatDate = (
   date: any = new Date(),
   format: number = 1,
-  upperCase?: boolean,
+  options: TimeOptions = {},
 ): any => {
   let dateFt: Date | null = null;
 
@@ -110,7 +123,7 @@ export const formatDate = (
       result = `${hour12}:${pad(minutes)}:${pad(seconds)} ${ampm}`;
       break;
     case 11:
-      result = timeFromNow(dateFt);
+      result = timeFromNow(dateFt, options);
       break;
     case 12:
       result = `${hour12}:${pad(minutes)} ${ampm}`;
@@ -119,7 +132,7 @@ export const formatDate = (
       result = dateFt.toISOString();
   }
 
-  return upperCase ? result.toUpperCase() : result.toLowerCase();
+  return options.lower ? result.toLowerCase() : result.toUpperCase();
 };
 
 export const removeTimeZone = (date: Date) => {
@@ -144,12 +157,12 @@ export class TimerService {
     return new Date().getFullYear();
   }
 
-  public formatDate(date = new Date(), format: FormatTimes = 1, upperCase?: boolean): any {
-    return formatDate(date, format, upperCase);
+  public formatDate(date = new Date(), format: FormatTimes = 1, options: TimeOptions = {}): any {
+    return formatDate(date, format, options);
   }
 
-  public timeFromNow(date: Date): string {
-    return timeFromNow(date);
+  public timeFromNow(date: Date, options: TimeOptions = {}): string {
+    return timeFromNow(date, options);
   }
 
   public belongsToSameMonth(start: Date, end: Date): boolean {

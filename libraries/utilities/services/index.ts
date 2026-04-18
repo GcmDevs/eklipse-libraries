@@ -1,5 +1,2 @@
-/*
- * Public API Surface of @eklipse/ng-utilities/services
- */
-export * from './save-as-excel.service';
+/* Public API Surface of @eklipse/ng-utilities/services */
 export * from './timer.service';
