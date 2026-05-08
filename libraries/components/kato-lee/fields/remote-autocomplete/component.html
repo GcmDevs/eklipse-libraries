@@ -1,5 +1,5 @@
 @if (!justOneLoad || (justOneLoad && wasLoaded)) {
-  <mat-form-field appearance="fill">
+  <mat-form-field [appearance]="appearance" [color]="color">
     <mat-label>
       <ng-content />{{ ' ' }}
       @if (isRequired) {

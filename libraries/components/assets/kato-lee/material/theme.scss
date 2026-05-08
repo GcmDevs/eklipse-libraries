@@ -165,3 +165,41 @@ button[matIconButton] {
   white-space: nowrap;
   overflow: hidden;
 }
+.tak-snackbar-success {
+  .mat-mdc-button:not(:disabled) {
+    font-weight: 600;
+    color: #004646 !important;
+  }
+  .mat-mdc-snackbar-surface,
+  .tak-snackbar-notification .mat-mdc-snack-bar-label .mdc-snackbar__label {
+    font-weight: 600;
+    color: rgb(39, 39, 39) !important;
+    background-color: rgba(223, 246, 234, 0.925) !important;
+  }
+}
+.tak-snackbar-danger {
+  .mat-mdc-button:not(:disabled) {
+    font-weight: 600;
+    color: #fd2626 !important;
+  }
+  .mat-mdc-snackbar-surface,
+  .tak-snackbar-notification .mat-mdc-snack-bar-label .mdc-snackbar__label {
+    font-weight: 600;
+    color: rgb(39, 39, 39) !important;
+    background-color: rgba(255, 156, 156, 0.925) !important;
+  }
+}
+.tak-snackbar-notification {
+  .mat-mdc-button:not(:disabled) {
+    font-weight: 600;
+  }
+  .mat-mdc-snackbar-surface,
+  .tak-snackbar-notification .mat-mdc-snack-bar-label .mdc-snackbar__label {
+    font-weight: 600;
+    color: rgb(212, 212, 212) !important;
+    background-color: rgba(27, 27, 27, 0.925) !important;
+  }
+}
+.mdc-notched-outline__notch {
+  border-right: transparent !important;
+}

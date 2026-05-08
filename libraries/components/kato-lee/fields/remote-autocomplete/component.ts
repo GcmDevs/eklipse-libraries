@@ -10,7 +10,6 @@ import {
   Input,
 } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TakToast } from '@eklipse/ng-components/kato-lee/toast';
 import {
   Observable,
   Subject,
@@ -24,11 +23,13 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { ThemePalette } from '@angular/material/core';
+import { MatFormFieldAppearance, MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { TAK_PRESS_ESC_KEY } from '../common';
+import { TAK_DEFAULT_APPEARANCE_FORM, TAK_PRESS_ESC_KEY } from '../common';
+import { TakToast } from '@eklipse/ng-components/kato-lee/toast';
 
 @Component({
   standalone: true,
@@ -61,6 +62,8 @@ import { TAK_PRESS_ESC_KEY } from '../common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TakRemoteAutocompleteFieldComponent implements OnInit, OnDestroy {
+  @Input() appearance: MatFormFieldAppearance = TAK_DEFAULT_APPEARANCE_FORM;
+  @Input() color: ThemePalette = 'primary';
   @Input() remoteUrl = '';
   @Input() params: any = {};
   @Input() option = 'option';
