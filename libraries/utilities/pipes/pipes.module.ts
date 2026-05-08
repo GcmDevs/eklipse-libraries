@@ -13,7 +13,6 @@ const pipes = [
   FormatMoneyPipe,
   SumColumnValuesPipe,
   TimeFromNowPipe,
-  TimeFromNowPipe,
 ];
 
 @NgModule({
