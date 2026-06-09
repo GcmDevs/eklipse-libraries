@@ -1,35 +1,25 @@
 import {
-  ChangeDetectorRef,
-  AfterViewInit,
-  OnDestroy,
-  Component,
-  Optional,
-  OnInit,
-  Input,
-  Self,
-} from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { MAT_DATE_LOCALE, MatNativeDateModule, ThemePalette } from '@angular/material/core';
-import { MatFormFieldAppearance } from '@angular/material/form-field';
-import {
   ControlValueAccessor,
-  FormControl,
+  ReactiveFormsModule,
   FormGroupDirective,
   FormsModule,
+  FormControl,
   NgControl,
-  ReactiveFormsModule,
 } from '@angular/forms';
-import { TAK_DEFAULT_APPEARANCE_FORM, TakAutocompleteFieldType } from '../common';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
-import { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { TakErrorComponent } from '../error/component';
 import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
+import { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';
+import { AfterViewInit, OnDestroy, Component, OnInit, Input, signal } from '@angular/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule, ThemePalette } from '@angular/material/core';
+import { TAK_DEFAULT_APPEARANCE_FORM, TakAutocompleteFieldType } from '../common';
 import { getSpanishMatDatePickerIntl } from '../mat-date-picker.translation';
+import { TakErrorComponent } from '../error/component';
 
 @Component({
-  standalone: true,
   imports: [
     TakErrorComponent,
     FormsModule,
@@ -41,6 +31,7 @@ import { getSpanishMatDatePickerIntl } from '../mat-date-picker.translation';
     MatInputModule,
   ],
   providers: [
+    FormGroupDirective,
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
     { provide: MatDatepickerIntl, useValue: getSpanishMatDatePickerIntl() },
   ],
@@ -66,21 +57,19 @@ export class TakDateFieldComponent
   public onChangeFn = (_: any) => {};
   public onTouchFn = (_: any) => {};
 
-  private _isSubmitted = false;
+  private _isSubmitted = signal(false);
   private _isInvalid = false;
   private _required = false;
   private _value = '';
 
   constructor(
-    @Self() @Optional() private _ngControl: NgControl,
-    @Optional() private _formGroupDirective: FormGroupDirective,
-    private _cd: ChangeDetectorRef,
+    private _ngControl: NgControl,
+    private _formGroupDirective: FormGroupDirective,
   ) {
     if (_ngControl) this._ngControl.valueAccessor = this;
     if (_formGroupDirective) {
       _formGroupDirective.ngSubmit.pipe(takeUntil(this._unsubscribe$)).subscribe(() => {
-        this._isSubmitted = true;
-        _cd.markForCheck();
+        this._isSubmitted.set(true);
       });
     }
   }

@@ -1,5 +1,5 @@
 <div class="tak-form-container">
-  @if (!justOneLoad || (justOneLoad && wasLoaded)) {
+  @if (!justOneLoad || (justOneLoad && wasLoaded())) {
     <mat-form-field [appearance]="appearance" [color]="color">
       <mat-label>
         <ng-content />{{ ' ' }}
@@ -9,7 +9,7 @@
       </mat-label>
       <input matInput [formControl]="autocomplete" [matAutocomplete]="auto" />
 
-      @if (isLoading || (autocomplete.value === null && isLoadingItem)) {
+      @if (isLoading() || (autocomplete.value === null && isLoadingItem)) {
         <mat-spinner
           mat-icon-button
           color="no-theme"

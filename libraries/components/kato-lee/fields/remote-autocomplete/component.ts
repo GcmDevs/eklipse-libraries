@@ -8,6 +8,7 @@ import {
   OnDestroy,
   ViewEncapsulation,
   Input,
+  signal,
 } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -32,7 +33,6 @@ import { TAK_DEFAULT_APPEARANCE_FORM, TAK_PRESS_ESC_KEY } from '../common';
 import { TakToast } from '@eklipse/ng-components/kato-lee/toast';
 
 @Component({
-  standalone: true,
   imports: [
     FormsModule,
     MatProgressSpinnerModule,
@@ -75,7 +75,7 @@ export class TakRemoteAutocompleteFieldComponent implements OnInit, OnDestroy {
   public suggestions: any[] = [];
   public autocomplete = new FormControl();
 
-  private _isLoading = false;
+  private _isLoading = signal(false);
   public isValueSelected = false;
 
   private _unsubscribe$ = new Subject<void>();
@@ -86,11 +86,10 @@ export class TakRemoteAutocompleteFieldComponent implements OnInit, OnDestroy {
   private _value = '';
   private _notSuggestions = false;
 
-  public wasLoaded = false;
+  public wasLoaded = signal(false);
 
   constructor(
     private _http: HttpClient,
-    private _cd: ChangeDetectorRef,
     private _toast: TakToast,
   ) {}
 
@@ -103,8 +102,7 @@ export class TakRemoteAutocompleteFieldComponent implements OnInit, OnDestroy {
             value &&
             !this.suggestions.filter((suggestion) => suggestion.getNombre() === value).length
           ) {
-            this._isLoading = true;
-            this._cd.markForCheck();
+            this._isLoading.set(true);
 
             try {
               const result = await firstValueFrom(
@@ -132,8 +130,7 @@ export class TakRemoteAutocompleteFieldComponent implements OnInit, OnDestroy {
               this._toast.danger(error.error.message);
             }
 
-            this._isLoading = false;
-            this._cd.markForCheck();
+            this._isLoading.set(false);
           }
         });
     } else {
@@ -145,8 +142,7 @@ export class TakRemoteAutocompleteFieldComponent implements OnInit, OnDestroy {
         );
 
         this.suggestions = result;
-        this.wasLoaded = true;
-        this._cd.markForCheck();
+        this.wasLoaded.set(true);
 
         this._filteredOptions = this.autocomplete.valueChanges.pipe(
           takeUntil(this._unsubscribe$),
@@ -182,7 +178,6 @@ export class TakRemoteAutocompleteFieldComponent implements OnInit, OnDestroy {
       this.suggestions = result;
       this.autocomplete.setValue('');
       this._toast.notification('Data actualizada correctamente');
-      this._cd.markForCheck();
     } catch (error: any) {
       this._toast.danger(error.error.message);
     }

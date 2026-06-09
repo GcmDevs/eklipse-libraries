@@ -2,12 +2,11 @@ import {
   ChangeDetectorRef,
   OnDestroy,
   Component,
-  Optional,
   Input,
-  Self,
   OnInit,
   EventEmitter,
   Output,
+  signal,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -34,7 +33,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
-  standalone: true,
   imports: [
     MatTooltipModule,
     MatMenuModule,
@@ -49,6 +47,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatInputModule,
   ],
+  providers: [FormGroupDirective],
   selector: 'tak-select-field',
   templateUrl: './component.html',
 })
@@ -74,19 +73,17 @@ export class TakSelectFieldComponent implements OnInit, OnDestroy, ControlValueA
   public onTouchFn = (_: any) => {};
 
   public isInvalid = false;
-  public isSubmitted = false;
+  public isSubmitted = signal(false);
   private _unsubscribe$ = new Subject<void>();
 
   constructor(
-    @Self() @Optional() private _ngControl: NgControl,
-    @Optional() private _formGroupDirective: FormGroupDirective,
-    private _cd: ChangeDetectorRef,
+    private _ngControl: NgControl,
+    private _formGroupDirective: FormGroupDirective,
   ) {
     if (_ngControl) this._ngControl.valueAccessor = this;
     if (_formGroupDirective) {
       _formGroupDirective.ngSubmit.pipe(takeUntil(this._unsubscribe$)).subscribe(() => {
-        this.isSubmitted = true;
-        _cd.markForCheck();
+        this.isSubmitted.set(true);
       });
     }
   }

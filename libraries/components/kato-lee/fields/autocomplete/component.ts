@@ -1,41 +1,30 @@
 import {
-  Component,
-  OnDestroy,
-  Optional,
-  Input,
-  Self,
-  OnInit,
-  ChangeDetectorRef,
-  Output,
-  EventEmitter,
-} from '@angular/core';
-import {
   ControlValueAccessor,
+  ReactiveFormsModule,
   FormGroupDirective,
   FormControl,
-  NgControl,
   FormsModule,
-  ReactiveFormsModule,
+  NgControl,
 } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { debounceTime, map, Observable, Subject, takeUntil } from 'rxjs';
-import { MatFormFieldAppearance } from '@angular/material/form-field';
+import { Component, OnDestroy, Input, OnInit, Output, EventEmitter, signal } from '@angular/core';
 import { MatOptionSelectionChange, ThemePalette } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldAppearance } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { TakErrorComponent } from '../error/component';
 import {
   TakAutocompleteFieldType,
   TAK_DEFAULT_APPEARANCE_FORM,
   TAK_PRESS_ESC_KEY,
 } from '../common';
-import { CommonModule } from '@angular/common';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { TakErrorComponent } from '../error/component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  standalone: true,
   imports: [
     FormsModule,
     CommonModule,
@@ -48,6 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     MatInputModule,
   ],
+  providers: [FormGroupDirective],
   selector: 'tak-autocomplete-field',
   templateUrl: './component.html',
 })
@@ -74,7 +64,7 @@ export class TakAutocompleteFieldComponent implements OnInit, OnDestroy, Control
   public onChangeFn = (_: any) => {};
   public onTouchFn = (_: any) => {};
 
-  private _isSubmitted = false;
+  private _isSubmitted = signal(false);
   private _isInvalid = false;
   private _required = false;
   private _value = '';
@@ -83,15 +73,13 @@ export class TakAutocompleteFieldComponent implements OnInit, OnDestroy, Control
   private _lastValue = '';
 
   constructor(
-    @Self() @Optional() private _ngControl: NgControl,
-    @Optional() private _formGroupDirective: FormGroupDirective,
-    private _cd: ChangeDetectorRef,
+    private _ngControl: NgControl,
+    private _formGroupDirective: FormGroupDirective,
   ) {
     if (_ngControl) this._ngControl.valueAccessor = this;
     if (_formGroupDirective) {
       _formGroupDirective.ngSubmit.pipe(takeUntil(this._unsubscribe$)).subscribe(() => {
-        this._isSubmitted = true;
-        _cd.markForCheck();
+        this._isSubmitted.set(true);
       });
     }
   }
@@ -141,8 +129,7 @@ export class TakAutocompleteFieldComponent implements OnInit, OnDestroy, Control
   public writeValue(value: string): void {
     if (value === null) this._isInvalid = false;
     this._value = value || '';
-    this._isSubmitted = false;
-    this._cd.markForCheck();
+    this._isSubmitted.set(false);
   }
 
   public registerOnChange(fn: any): void {
@@ -215,7 +202,6 @@ export class TakAutocompleteFieldComponent implements OnInit, OnDestroy, Control
 
   public onUpdateSuggestions(suggestions: any[]) {
     this.suggestions = suggestions;
-    this._cd.markForCheck();
 
     this.onChangeFn(
       this.suggestions.filter(

@@ -1,36 +1,25 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  Optional,
-  OnInit,
-  Input,
-  Self,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { EventEmitter, Component, OnDestroy, OnInit, Output, Input, signal } from '@angular/core';
 import {
   ControlValueAccessor,
-  FormGroupDirective,
-  FormControl,
-  NgControl,
-  Validators,
-  FormsModule,
   ReactiveFormsModule,
+  FormGroupDirective,
+  FormsModule,
+  FormControl,
+  Validators,
+  NgControl,
 } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { TAK_DEFAULT_APPEARANCE_FORM, TakGeneralFieldType } from '../common';
-import { FloatLabelType, MatFormFieldAppearance } from '@angular/material/form-field';
-import { ThemePalette } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { TakErrorComponent } from '../error/component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
+import { ThemePalette } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FloatLabelType, MatFormFieldAppearance } from '@angular/material/form-field';
+import { TAK_DEFAULT_APPEARANCE_FORM, TakGeneralFieldType } from '../common';
+import { TakErrorComponent } from '../error/component';
 
 @Component({
-  standalone: true,
   imports: [
     TakErrorComponent,
     FormsModule,
@@ -41,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     MatInputModule,
   ],
+  providers: [FormGroupDirective],
   selector: 'tak-general-field',
   templateUrl: './component.html',
 })
@@ -70,7 +60,7 @@ export class TakGeneralFieldComponent implements OnInit, OnDestroy, ControlValue
   public onChangeFn = (_: any) => {};
   public onTouchFn = (_: any) => {};
 
-  private _isSubmitted = false;
+  private _isSubmitted = signal(false);
   private _isInvalid = false;
   private _required = false;
   private _value = '';
@@ -79,16 +69,14 @@ export class TakGeneralFieldComponent implements OnInit, OnDestroy, ControlValue
   private _decrypted = false;
 
   constructor(
-    @Self() @Optional() private _ngControl: NgControl,
-    @Optional() private _formGroupDirective: FormGroupDirective,
-    private _cd: ChangeDetectorRef,
+    private _ngControl: NgControl,
+    private _formGroupDirective: FormGroupDirective,
   ) {
     if (_ngControl) this._ngControl.valueAccessor = this;
 
     if (_formGroupDirective) {
       this._subscription = _formGroupDirective.ngSubmit.subscribe(() => {
-        this._isSubmitted = true;
-        _cd.markForCheck();
+        this._isSubmitted.set(true);
       });
     }
   }
@@ -101,7 +89,6 @@ export class TakGeneralFieldComponent implements OnInit, OnDestroy, ControlValue
       this.appearance = 'fill';
       this.floatLabel = 'auto';
       this.hasClearButton = true;
-      this._cd.markForCheck();
     }
 
     if (form?._rawValidators) {
@@ -116,8 +103,7 @@ export class TakGeneralFieldComponent implements OnInit, OnDestroy, ControlValue
   public writeValue(value: string): void {
     if (value === null) this._isInvalid = false;
     this._value = value;
-    this._isSubmitted = false;
-    this._cd.markForCheck();
+    this._isSubmitted.set(false);
   }
 
   public registerOnChange(fn: any): void {

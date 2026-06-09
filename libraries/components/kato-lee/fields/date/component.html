@@ -1,7 +1,7 @@
 @if (!notInput) {
   <div class="tak-form-container">
     <mat-form-field
-      [class.mat-form-field-invalid]="isInvalid || (isSubmitted && control.invalid)"
+      [class.mat-form-field-invalid]="isInvalid || (isSubmitted() && control.invalid)"
       [appearance]="appearance"
       [color]="color"
     >
@@ -27,7 +27,7 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker (closed)="onCloseDatePicker()" #picker></mat-datepicker>
     </mat-form-field>
-    @if (isInvalid || (isSubmitted && control.invalid)) {
+    @if (isInvalid || (isSubmitted() && control.invalid)) {
       <tak-error [control]="control" [isDateField]="true" />
     }
   </div>
@@ -36,7 +36,7 @@
   <div>
     <div
       class="tak__date-not-input__picker-container"
-      [class.mat-form-field-invalid]="isInvalid || (isSubmitted && control.invalid)"
+      [class.mat-form-field-invalid]="isInvalid || (isSubmitted() && control.invalid)"
     >
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker (closed)="onCloseDatePicker()" #picker></mat-datepicker>

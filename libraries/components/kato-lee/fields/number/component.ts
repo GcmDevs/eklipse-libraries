@@ -1,14 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  OnDestroy,
-  Optional,
-  OnInit,
-  Input,
-  Self,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, Input, Output, EventEmitter, signal } from '@angular/core';
 import {
   ControlValueAccessor,
   FormGroupDirective,
@@ -30,7 +20,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  standalone: true,
   imports: [
     TakErrorComponent,
     FormsModule,
@@ -41,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
     MatInputModule,
   ],
+  providers: [FormGroupDirective],
   selector: 'tak-number-field',
   templateUrl: './component.html',
 })
@@ -71,7 +61,7 @@ export class TakNumberFieldComponent implements OnInit, OnDestroy, ControlValueA
   public onChangeFn = (_: any) => {};
   public onTouchFn = (_: any) => {};
 
-  private _isSubmitted = false;
+  private _isSubmitted = signal(false);
   private _isInvalid = false;
   private _required = false;
   private _value = '';
@@ -79,16 +69,14 @@ export class TakNumberFieldComponent implements OnInit, OnDestroy, ControlValueA
   private _subscription!: Subscription;
 
   constructor(
-    @Self() @Optional() private _ngControl: NgControl,
-    @Optional() private _formGroupDirective: FormGroupDirective,
-    private _cd: ChangeDetectorRef,
+    private _ngControl: NgControl,
+    private _formGroupDirective: FormGroupDirective,
   ) {
     if (_ngControl) this._ngControl.valueAccessor = this;
 
     if (_formGroupDirective) {
       this._subscription = _formGroupDirective.ngSubmit.subscribe(() => {
-        this._isSubmitted = true;
-        _cd.markForCheck();
+        this._isSubmitted.set(true);
       });
     }
   }
@@ -111,8 +99,7 @@ export class TakNumberFieldComponent implements OnInit, OnDestroy, ControlValueA
   public writeValue(value: string): void {
     if (value === null) this._isInvalid = false;
     this._value = value;
-    this._isSubmitted = false;
-    this._cd.markForCheck();
+    this._isSubmitted.set(false);
   }
 
   public registerOnChange(fn: any): void {

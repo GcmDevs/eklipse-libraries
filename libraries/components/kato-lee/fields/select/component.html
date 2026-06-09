@@ -19,7 +19,7 @@
         }
       </mat-select>
     </mat-form-field>
-    @if (isInvalid || (isSubmitted && control.invalid)) {
+    @if (isInvalid || (isSubmitted() && control.invalid)) {
       <tak-error [control]="control"></tak-error>
     }
   </div>

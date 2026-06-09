@@ -1,6 +1,6 @@
 <div class="tak-form-container">
   <mat-form-field
-    [class.mat-form-field-invalid]="isInvalid || (isSubmitted && control.invalid)"
+    [class.mat-form-field-invalid]="isInvalid || (isSubmitted() && control.invalid)"
     [appearance]="appearance"
     [color]="color"
   >
@@ -53,7 +53,7 @@
       }
     </mat-autocomplete>
   </mat-form-field>
-  @if (isInvalid || (isSubmitted && control.invalid)) {
+  @if (isInvalid || (isSubmitted() && control.invalid)) {
     <tak-error [control]="control"></tak-error>
   }
 </div>
